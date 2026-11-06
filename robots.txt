@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://silink.com.ar/sitemap.xml
