@@ -44,6 +44,7 @@ body {
   background: var(--white);
 }
 
+[hidden] { display: none !important; }
 img, svg { max-width: 100%; }
 img { height: auto; display: block; }
 
@@ -186,8 +187,8 @@ a { color: var(--blue-700); }
 .eyebrow { display: inline-block; margin-bottom: 16px; padding: 6px 12px; border-radius: 999px; background: #fff; border: 1px solid var(--line); color: var(--blue-700); font-weight: 700; font-size: .85rem; }
 .lead { font-size: 1.1rem; color: var(--muted); max-width: 34em; }
 @media (min-width: 760px) { .lead { font-size: 1.2rem; } }
-.hero__actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 24px 0 16px; max-width: 480px; }
-.hero__actions .btn { padding-inline: .75rem; }
+.hero__actions { display: flex; flex-direction: column; gap: 12px; margin: 24px 0 16px; }
+@media (min-width: 560px) { .hero__actions { flex-direction: row; flex-wrap: wrap; } }
 .hero__diag { margin: 0; color: var(--muted); font-size: 1rem; }
 .hero__diag a { font-weight: 700; }
 .chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: .95rem; color: var(--muted); }
@@ -352,14 +353,18 @@ a { color: var(--blue-700); }
 
 /* ---------- Footer ---------- */
 .footer { background: var(--soft); padding: 48px 0 24px; }
-.footer__inner { display: grid; gap: 28px; }
+.footer__inner { display: grid; gap: 32px; }
+.footer__h { margin: 0 0 12px; font-weight: 800; color: var(--blue-900); }
+.footer__nav ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.footer__nav a { color: var(--ink); font-weight: 600; text-decoration: none; padding: 4px 0; display: inline-block; }
+.footer__nav a:hover, .footer__nav a[aria-current="page"] { color: var(--blue-700); text-decoration: underline; text-underline-offset: 4px; }
 .footer__about { margin: 14px 0 0; max-width: 300px; font-size: .95rem; color: var(--muted); }
 .footer__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; align-content: start; }
 .footer__list li { display: flex; align-items: center; gap: 12px; }
 .footer__list .ico { color: var(--blue-700); }
 .footer__list a { color: var(--ink); font-weight: 600; }
 .footer__legal { margin: 32px auto 0; padding-top: 20px; border-top: 1px solid var(--line); font-size: .9rem; color: var(--muted); }
-@media (min-width: 760px) { .footer__inner { grid-template-columns: auto 1fr; gap: 64px; align-items: center; } }
+@media (min-width: 760px) { .footer__inner { grid-template-columns: 1.1fr .8fr 1.3fr; gap: 48px; align-items: start; } }
 @media (max-width: 959px) { .footer { padding-bottom: 96px; } }
 
 /* ---------- Botón flotante de WhatsApp (solo mobile) ---------- */
@@ -472,6 +477,65 @@ a { color: var(--blue-700); }
 .steps--compact h3 { font-size: 1rem; }
 .steps--compact p { font-size: .92rem; }
 @media (min-width: 960px) { .steps--compact { gap: 16px; } .steps--compact li { padding: 16px 16px 16px 64px; } .steps--compact li::before { left: 14px; top: 14px; } }
+
+/* ==========================================================================
+   Sitio por tipo de cliente (multipágina)
+   ========================================================================== */
+/* Menú: página activa */
+.nav a[aria-current="page"] { color: var(--blue-700); box-shadow: inset 0 -3px 0 var(--blue-700); }
+
+/* Inicio: ¿Para quién es? */
+.audience { display: flex; flex-direction: column; padding: 24px; background: #fff; border: 1px solid var(--line); border-top: 5px solid var(--blue); border-radius: var(--radius); box-shadow: var(--shadow); }
+.audience h3 { font-size: 1.3rem; }
+.audience p { flex: 1; color: var(--muted); }
+.audience .btn { margin-top: 8px; }
+.audience .icon-badge { background: #E3F3FA; color: var(--blue-700); }
+
+/* Héroes de páginas internas */
+.hero--page .hero__copy { max-width: 760px; }
+.quicknav { list-style: none; margin: 20px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.quicknav a { display: inline-block; padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--blue-900); font-weight: 600; font-size: .95rem; text-decoration: none; }
+.quicknav a:hover { border-color: var(--blue-700); color: var(--blue-700); }
+
+/* Tarjetas sueltas y espaciados */
+.card--narrow { max-width: 640px; }
+.bundle--single { max-width: 560px; }
+.grid--after { margin-top: 20px; }
+.bundle .icon-badge { background: rgba(255, 255, 255, .12); color: #fff; }
+
+/* Notas destacadas */
+.callout { margin-top: 20px; padding: 14px 18px; border-radius: 12px; background: var(--soft); border-left: 4px solid var(--blue); }
+.callout p { margin: 0; }
+.section--soft .callout { background: #fff; }
+.note-link { margin: 20px 0 0; color: var(--muted); }
+
+/* Bloques de dos columnas (texto + tarjeta) */
+.split { display: grid; gap: 24px; align-items: start; }
+@media (min-width: 960px) { .split { grid-template-columns: 1fr 1fr; gap: 48px; } }
+
+/* Edificios: qué gana el edificio */
+.gains { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.gains li { display: flex; gap: 14px; align-items: flex-start; padding: 16px 18px; background: #fff; border: 1px solid var(--line); border-radius: 14px; }
+.gains .ico { color: var(--green-700); margin-top: 2px; }
+
+/* Ayuda: guías con pasos numerados */
+.guides { display: grid; gap: 20px; }
+.guide { padding: 24px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); }
+.guide__head { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
+.guide__head .icon-badge { margin: 0; flex: none; }
+.guide h2 { margin: 0; font-size: 1.35rem; }
+.guide__steps { list-style: none; margin: 16px 0; padding: 0; counter-reset: paso; }
+.guide__steps li { position: relative; padding: 2px 0 14px 46px; counter-increment: paso; }
+.guide__steps li::before { content: counter(paso); position: absolute; left: 0; top: 0; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--blue-700); color: #fff; font-weight: 800; font-size: .95rem; }
+.guide__steps li:last-child { padding-bottom: 0; }
+.guide .btn { margin-top: 8px; }
+
+/* Reseñas de clientes (bloque preparado, oculto hasta tener reseñas reales) */
+.reviews__grid { display: grid; gap: 16px; }
+.review { margin: 0; padding: 24px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); }
+.review blockquote { margin: 0 0 12px; }
+.review figcaption { font-weight: 700; color: var(--blue-900); }
+@media (min-width: 960px) { .reviews__grid { grid-template-columns: repeat(3, 1fr); } }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

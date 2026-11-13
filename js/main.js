@@ -1,13 +1,19 @@
-/* Silink · lógica del sitio. Los datos editables están en config.js */
+/* Silink · lógica del sitio. Los datos editables están en config.js
+   y el header/footer compartidos en layout.js */
 (function () {
   'use strict';
 
   var $ = function (sel, ctx) { return (ctx || document).querySelector(sel); };
   var $$ = function (sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); };
+  var pageKey = document.body.getAttribute('data-page') || 'inicio';
 
   /* ---------- Helpers ---------- */
   function waLink(texto, numero) {
     return 'https://wa.me/' + (numero || SITE.whatsapp) + '?text=' + encodeURIComponent(texto);
+  }
+
+  function numeroPara(tel) {
+    return tel === 'internet' ? SITE.whatsappInternet : SITE.whatsapp;
   }
 
   function planMessage(plan) {
@@ -24,7 +30,12 @@
     return node;
   }
 
-  /* ---------- Planes (se arman desde config.js) ---------- */
+  function openLink(a) {
+    a.target = '_blank';
+    a.rel = 'noopener';
+  }
+
+  /* ---------- Planes de soporte (se arman desde config.js; solo en la página Empresas) ---------- */
   function renderPlanes() {
     var grid = $('#planes-grid');
     if (!grid) return;
@@ -55,15 +66,14 @@
 
       var btn = el('a', 'btn ' + (plan.destacado ? 'btn--wa' : 'btn--outline') + ' btn--block', 'Quiero el plan ' + plan.nombre);
       btn.href = waLink(planMessage(plan));
-      btn.target = '_blank';
-      btn.rel = 'noopener';
+      openLink(btn);
       card.appendChild(btn);
 
       grid.appendChild(card);
     });
   }
 
-  /* ---------- Textos con datos de config (data-bind="ruta") ---------- */
+  /* ---------- Textos con datos de config (data-bind="ruta"). Si el valor está vacío se deja el texto del HTML ---------- */
   function renderBindings() {
     var values = {
       'condiciones.horaAdicional': CONDICIONES.moneda + ' ' + CONDICIONES.horaAdicional,
@@ -76,80 +86,110 @@
       'site.whatsappVisible': SITE.whatsappVisible,
       'site.whatsappInternetVisible': SITE.whatsappInternetVisible,
       'site.email': SITE.email,
+      'ayuda.appCamaras': AYUDA.appCamaras,
     };
     $$('[data-bind]').forEach(function (node) {
-      var key = node.getAttribute('data-bind');
-      if (values[key] !== undefined) node.textContent = values[key];
+      var value = values[node.getAttribute('data-bind')];
+      if (value) node.textContent = value;
     });
   }
 
-  /* ---------- Enlaces de WhatsApp (data-wa="clave"; data-wa-tel="internet" usa el número de internet) ---------- */
+  /* ---------- Enlaces de WhatsApp ----------
+     data-wa="clave"            → mensaje de MENSAJES_WA
+     data-wa-tel="internet"     → usa SITE.whatsappInternet (si no, SITE.whatsapp)
+     data-wa-contacto           → botón "Contacto": mensaje y número según la página */
   function renderWhatsapp() {
     $$('[data-wa]').forEach(function (a) {
       var msg = MENSAJES_WA[a.getAttribute('data-wa')] || MENSAJES_WA.consulta;
-      var numero = a.getAttribute('data-wa-tel') === 'internet' ? SITE.whatsappInternet : SITE.whatsapp;
-      a.href = waLink(msg, numero);
-      a.target = '_blank';
-      a.rel = 'noopener';
+      a.href = waLink(msg, numeroPara(a.getAttribute('data-wa-tel')));
+      openLink(a);
     });
+
+    var contactoKey = 'contacto' + pageKey.charAt(0).toUpperCase() + pageKey.slice(1);
+    $$('[data-wa-contacto]').forEach(function (a) {
+      a.href = waLink(MENSAJES_WA[contactoKey] || MENSAJES_WA.contacto, numeroPara(WHATSAPP_POR_PAGINA[pageKey]));
+      openLink(a);
+    });
+
     // El número de internet solo se muestra en el footer si es distinto del principal
     var extra = $('[data-internet-li]');
     if (extra) extra.hidden = SITE.whatsappInternet === SITE.whatsapp;
   }
 
-  /* ---------- Cobertura: lista de zonas (config) y formulario que abre WhatsApp ---------- */
+  /* ---------- Cobertura: lista de zonas (config) ---------- */
   function renderZonas() {
-    var box = $('#zonas');
-    var list = $('#zonas-lista');
-    if (!box || !list || !ZONAS_COBERTURA.length) return;
-    ZONAS_COBERTURA.forEach(function (zona) { list.appendChild(el('li', '', zona)); });
-    box.hidden = false;
+    if (!ZONAS_COBERTURA.length) return;
+    $$('.zones').forEach(function (box) {
+      var list = $('ul', box);
+      if (!list) return;
+      ZONAS_COBERTURA.forEach(function (zona) { list.appendChild(el('li', '', zona)); });
+      box.hidden = false;
+    });
   }
 
-  function initCoverageForm() {
-    var form = $('#cobertura-form');
-    if (!form) return;
-    var error = $('#cob-error');
-    var status = $('#cob-status');
+  /* ---------- Formularios que arman un mensaje y abren WhatsApp ----------
+     <form data-wa-form="clave" data-wa-tel="internet">
+     Cada campo con name se reemplaza en la plantilla como {nombre-del-campo}.
+     Atributos opcionales por campo: data-error (mensaje si falta), data-needs-number
+     (exige un número, ej. altura), data-prefix / data-suffix (texto que se agrega
+     solo si el campo no está vacío). */
+  function initWaForms() {
+    $$('form[data-wa-form]').forEach(function (form) {
+      var template = MENSAJES_WA[form.getAttribute('data-wa-form')];
+      var numero = numeroPara(form.getAttribute('data-wa-tel'));
+      var error = $('.form__error', form);
+      var status = $('.form__status', form);
+      if (!template) return;
 
-    function showError(msg, field) {
-      error.textContent = msg;
-      error.hidden = false;
-      if (field) field.focus();
-    }
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var nombre = form.elements.nombre;
-      var direccion = form.elements.direccion;
-      var tipo = form.elements.tipo;
-      error.hidden = true;
-      status.hidden = true;
-
-      if (!nombre.value.trim()) return showError('Escribí tu nombre.', nombre);
-      if (!direccion.value.trim() || !/\d/.test(direccion.value)) {
-        return showError('Escribí la calle y la altura, por ejemplo: San Martín 1234.', direccion);
+      function showError(msg, field) {
+        error.textContent = msg;
+        error.hidden = false;
+        field.focus();
       }
-      if (!tipo.value) return showError('Elegí si es para una empresa, un comercio o un hogar.', tipo);
 
-      var piso = form.elements.piso.value.trim();
-      var msg = MENSAJES_WA.cobertura
-        .replace('{direccion}', direccion.value.trim())
-        .replace('{piso}', piso ? ', piso/oficina ' + piso : '')
-        .replace('{tipo}', tipo.value)
-        .replace('{nombre}', nombre.value.trim());
-      var url = waLink(msg, SITE.whatsappInternet);
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        error.hidden = true;
+        status.hidden = true;
 
-      var win = window.open(url, '_blank', 'noopener');
-      status.textContent = '';
-      status.appendChild(document.createTextNode(win ? 'Se abrió WhatsApp con tu consulta. ' : 'No pudimos abrir WhatsApp automáticamente. '));
-      var link = el('a', '', 'Tocá acá si no se abrió');
-      link.href = url;
-      link.target = '_blank';
-      link.rel = 'noopener';
-      status.appendChild(link);
-      status.hidden = false;
+        var fields = Array.prototype.slice.call(form.elements).filter(function (f) { return f.name; });
+        for (var i = 0; i < fields.length; i++) {
+          var f = fields[i];
+          var value = f.value.trim();
+          if (f.required && !value) return showError(f.getAttribute('data-error') || 'Completá este campo.', f);
+          if (value && f.hasAttribute('data-needs-number') && !/\d/.test(value)) {
+            return showError(f.getAttribute('data-error') || 'Completá este campo.', f);
+          }
+        }
+
+        var msg = template;
+        fields.forEach(function (f) {
+          var value = f.value.trim();
+          var text = value ? (f.getAttribute('data-prefix') || '') + value + (f.getAttribute('data-suffix') || '') : '';
+          msg = msg.split('{' + f.name + '}').join(text);
+        });
+        var url = waLink(msg, numero);
+
+        var win = window.open(url, '_blank', 'noopener');
+        status.textContent = '';
+        status.appendChild(document.createTextNode(win ? 'Se abrió WhatsApp con tu consulta. ' : 'No pudimos abrir WhatsApp automáticamente. '));
+        var link = el('a', '', 'Tocá acá si no se abrió');
+        link.href = url;
+        openLink(link);
+        status.appendChild(link);
+        status.hidden = false;
+      });
     });
+  }
+
+  /* ---------- Ayuda: formas de pago (config) ---------- */
+  function renderPagos() {
+    var list = $('#pagos-lista');
+    var fallback = $('#pagos-vacio');
+    if (!list || !AYUDA.formasDePago.length) return;
+    AYUDA.formasDePago.forEach(function (forma) { list.appendChild(el('li', '', forma)); });
+    list.hidden = false;
+    if (fallback) fallback.hidden = true;
   }
 
   /* ---------- Correo ---------- */
@@ -164,13 +204,14 @@
 
   /* ---------- Datos estructurados (Google) ---------- */
   function renderJsonLd() {
+    var canonical = $('link[rel="canonical"]');
     var data = {
       '@context': 'https://schema.org',
       '@type': 'ProfessionalService',
       '@id': SITE.url + '/#negocio',
       name: SITE.nombre,
-      description: 'Internet por fibra óptica en el microcentro de Mendoza y soporte y monitoreo IT para pymes con abono mensual fijo: conexión, red interna, servidores, backups y WiFi con un solo responsable.',
-      slogan: 'Internet, red y soporte para tu empresa, con un solo responsable',
+      description: 'Internet por fibra óptica en el microcentro de Mendoza, soporte y monitoreo IT en todo Mendoza y cámaras de seguridad, con un responsable local que responde.',
+      slogan: 'Internet, soporte informático y cámaras de seguridad en Mendoza',
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'Servicios de Silink',
@@ -181,7 +222,7 @@
           };
         }),
       },
-      url: SITE.url + '/',
+      url: canonical ? canonical.href : SITE.url + '/',
       image: SITE.url + '/assets/og-image.png',
       logo: SITE.url + '/assets/logo-silink.png',
       telephone: '+' + SITE.whatsapp,
@@ -234,17 +275,17 @@
     });
   }
 
-  /* ---------- Botón flotante: aparece al pasar el hero y se esconde en el llamado final ---------- */
+  /* ---------- Botón flotante: aparece al pasar el hero y se esconde en el llamado final y el footer ---------- */
   function initFloatingButton() {
     var fab = $('.fab');
-    var hero = $('#inicio');
-    var cta = $('#diagnostico');
+    var hero = $('.hero');
+    var cta = $('.cta');
     var footer = $('.footer');
-    if (!fab || !hero || !('IntersectionObserver' in window)) {
+    if (!fab || !('IntersectionObserver' in window)) {
       if (fab) fab.classList.add('is-visible');
       return;
     }
-    var hidden = new Set([hero]); // secciones que esconden el botón mientras se ven
+    var hidden = new Set(hero ? [hero] : []); // secciones que esconden el botón mientras se ven
     function update() {
       fab.classList.toggle('is-visible', hidden.size === 0);
     }
@@ -255,9 +296,10 @@
       update();
     });
     [hero, cta, footer].forEach(function (node) { if (node) obs.observe(node); });
+    update();
   }
 
-  /* ---------- FAQ: cerrar las otras al abrir una (opcional, mejora la lectura en mobile) ---------- */
+  /* ---------- FAQ: cerrar las otras del mismo grupo al abrir una ---------- */
   function initFaq() {
     $$('.faq').forEach(function (group) {
       var items = $$('details', group);
@@ -270,18 +312,24 @@
     });
   }
 
-  /* ---------- Inicio ---------- */
-  renderPlanes();
-  renderBindings();
-  renderWhatsapp();
-  renderEmail();
-  renderZonas();
-  initCoverageForm();
-  renderJsonLd();
-  initMenu();
-  initFloatingButton();
-  initFaq();
+  /* ---------- Inicio (espera a que layout.js haya insertado el footer) ---------- */
+  function init() {
+    renderPlanes();
+    renderBindings();
+    renderWhatsapp();
+    renderEmail();
+    renderZonas();
+    renderPagos();
+    initWaForms();
+    renderJsonLd();
+    initMenu();
+    initFloatingButton();
+    initFaq();
 
-  var year = $('#year');
-  if (year) year.textContent = new Date().getFullYear();
+    var year = $('#year');
+    if (year) year.textContent = new Date().getFullYear();
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
 })();
