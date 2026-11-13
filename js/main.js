@@ -259,11 +259,13 @@
 
   /* ---------- FAQ: cerrar las otras al abrir una (opcional, mejora la lectura en mobile) ---------- */
   function initFaq() {
-    var items = $$('.faq details');
-    items.forEach(function (d) {
-      d.addEventListener('toggle', function () {
-        if (!d.open) return;
-        items.forEach(function (o) { if (o !== d) o.open = false; });
+    $$('.faq').forEach(function (group) {
+      var items = $$('details', group);
+      items.forEach(function (d) {
+        d.addEventListener('toggle', function () {
+          if (!d.open) return;
+          items.forEach(function (o) { if (o !== d) o.open = false; });
+        });
       });
     });
   }

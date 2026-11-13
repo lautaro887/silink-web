@@ -112,7 +112,11 @@ const MENSAJES_WA = {
     'Hola Silink! Quiero cotizar un proyecto (cableado, WiFi, mudanza de oficina, servidores o dominios/correo). Les cuento qué necesito:',
   consulta:
     'Hola Silink! Tengo una consulta sobre sus servicios de soporte IT.',
+  soporte:
+    'Hola Silink! Quiero consultar por soporte IT para mi empresa.',
   /* Internet: estos mensajes salen al número SITE.whatsappInternet */
+  internetGeneral:
+    'Hola Silink! Quiero consultar por internet para mi empresa.',
   internetEmpresas:
     'Hola Silink! Quiero consultar disponibilidad y precio de internet para mi empresa (conexión simétrica con IP fija).',
   internetHogares:

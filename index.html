@@ -77,13 +77,12 @@
 
     <nav id="menu" class="nav" aria-label="Principal">
       <ul>
-        <li><a href="#servicios">Servicios</a></li>
         <li><a href="#internet">Internet</a></li>
+        <li><a href="#soporte">Soporte IT</a></li>
+        <li><a href="#todo-en-uno">Todo en uno</a></li>
         <li><a href="#planes">Planes</a></li>
-        <li><a href="#proyectos">Proyectos</a></li>
-        <li><a href="#como-trabajamos">Cómo trabajamos</a></li>
-        <li><a href="#experiencia">Experiencia</a></li>
-        <li><a href="#preguntas">Preguntas</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#contacto">Contacto</a></li>
         <li class="nav__cta"><a class="btn btn--wa btn--sm" data-wa="diagnostico" href="#diagnostico">Diagnóstico sin cargo</a></li>
       </ul>
     </nav>
@@ -96,61 +95,101 @@
   <section id="inicio" class="hero" aria-labelledby="hero-title">
     <div class="container hero__inner">
       <div class="hero__copy">
-        <p class="eyebrow">Internet y soporte IT · Mendoza</p>
-        <h1 id="hero-title">Internet, red y soporte para tu empresa, con un solo responsable</h1>
-        <p class="lead">Conexión por fibra en el microcentro de Mendoza y soporte IT con abono mensual fijo.</p>
+        <h1 id="hero-title">Internet y soporte informático para empresas de Mendoza</h1>
+        <p class="lead">Fibra en el microcentro y soporte IT con abono mensual. Contratá uno, el otro o los dos con un solo responsable.</p>
         <div class="hero__actions">
-          <a class="btn btn--wa btn--lg" data-wa="diagnostico" href="#diagnostico">Pedí tu diagnóstico sin cargo</a>
-          <a class="btn btn--ghost btn--lg" href="#cobertura">¿Llegamos a tu edificio?</a>
+          <a class="btn btn--blue btn--lg" href="#internet">Quiero internet</a>
+          <a class="btn btn--blue btn--lg" href="#soporte">Quiero soporte</a>
         </div>
-        <ul class="chips" aria-label="Por qué Silink">
-          <li>Red de fibra propia en el microcentro</li>
-          <li>Soporte remoto y en sitio en todo Mendoza</li>
-          <li>8 años de experiencia en IT</li>
-        </ul>
+        <p class="hero__diag">¿No sabés por dónde empezar? <a data-wa="diagnostico" href="#diagnostico">Pedí un diagnóstico sin cargo</a></p>
       </div>
 
       <figure class="status" aria-hidden="true">
         <div class="status__head">
           <span class="status__dot"></span>
-          <strong>Estado de tu empresa</strong>
+          <strong>Tu empresa, de un vistazo</strong>
           <span class="status__ok">Todo en orden</span>
         </div>
-        <ul class="status__list">
-          <li><svg class="ico"><use href="#i-globe"/></svg><span>Internet</span><em class="tag tag--ok">Funcionando</em></li>
-          <li><svg class="ico"><use href="#i-shield"/></svg><span>Internet de respaldo</span><em class="tag tag--ok">En espera</em></li>
-          <li><svg class="ico"><use href="#i-db"/></svg><span>Copias de seguridad</span><em class="tag tag--ok">Probadas</em></li>
-          <li class="is-warn"><svg class="ico"><use href="#i-printer"/></svg><span>Impresora de recepción</span><em class="tag tag--warn">Tóner bajo · aviso enviado</em></li>
-        </ul>
-        <figcaption>Ejemplo ilustrativo del monitoreo</figcaption>
+        <div class="status__group">
+          <p class="status__label">Internet</p>
+          <ul class="status__list">
+            <li><svg class="ico"><use href="#i-globe"/></svg><span>Internet por fibra</span><em class="tag tag--ok">Simétrica · IP fija</em></li>
+            <li><svg class="ico"><use href="#i-shield"/></svg><span>Internet de respaldo</span><em class="tag tag--ok">En espera</em></li>
+          </ul>
+        </div>
+        <div class="status__group">
+          <p class="status__label">Soporte IT</p>
+          <ul class="status__list">
+            <li><svg class="ico"><use href="#i-wrench"/></svg><span>Pedidos resueltos hoy</span><em class="tag tag--ok">3</em></li>
+            <li><svg class="ico"><use href="#i-db"/></svg><span>Copias de seguridad</span><em class="tag tag--ok">OK</em></li>
+          </ul>
+        </div>
+        <figcaption>Ejemplo ilustrativo</figcaption>
       </figure>
     </div>
   </section>
 
-  <!-- 2. PROBLEMAS -->
+  <!-- 2. DOS SERVICIOS -->
+  <section id="dos-servicios" class="section section--duo" aria-labelledby="duo-title">
+    <div class="container">
+      <h2 id="duo-title" class="sr-only">Nuestros dos servicios</h2>
+      <div class="duo">
+        <article class="duo__card duo__card--net">
+          <span class="icon-badge icon-badge--blue"><svg class="ico"><use href="#i-globe"/></svg></span>
+          <h3>Internet para tu empresa</h3>
+          <ul class="checklist">
+            <li>Fibra con IP fija y velocidad simétrica</li>
+            <li>Instalación rápida en edificios del microcentro</li>
+            <li>Internet de respaldo para que tu empresa no se frene si se corta el principal</li>
+          </ul>
+          <a class="btn btn--blue btn--block" href="#internet">Ver internet</a>
+        </article>
+        <article class="duo__card duo__card--sup">
+          <span class="icon-badge icon-badge--green"><svg class="ico"><use href="#i-wrench"/></svg></span>
+          <h3>Soporte IT para tu empresa</h3>
+          <ul class="checklist">
+            <li>Abono mensual fijo con horas de soporte</li>
+            <li>Monitoreo que avisa antes de que algo falle</li>
+            <li>Visitas en sitio en todo Mendoza</li>
+          </ul>
+          <a class="btn btn--blue btn--block" href="#soporte">Ver soporte</a>
+        </article>
+      </div>
+      <div class="combo">
+        <p><strong>Internet + soporte:</strong> un solo responsable y precio especial</p>
+        <a class="btn btn--light" href="#todo-en-uno">Ver paquetes</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. PROBLEMAS -->
   <section id="problemas" class="section section--soft" aria-labelledby="problemas-title">
     <div class="container">
       <header class="section__head">
         <h2 id="problemas-title">¿Te suena alguna de estas?</h2>
-        <p>Son los dolores de cabeza más comunes en las pymes que no tienen un área de sistemas.</p>
+        <p>Son los dolores de cabeza más comunes en las empresas que no tienen un área de sistemas.</p>
       </header>
       <div class="grid grid--4">
         <article class="card card--problem">
-          <span class="icon-badge"><svg class="ico"><use href="#i-alert"/></svg></span>
-          <h3>Se cae internet o el sistema y no sabés a quién llamar</h3>
-          <p>Con un solo contacto por WhatsApp, alguien que ya conoce tu empresa se ocupa.</p>
+          <p class="card__tag">Internet</p>
+          <span class="icon-badge"><svg class="ico"><use href="#i-globe"/></svg></span>
+          <h3>Se corta internet y el 0800 no te resuelve nada</h3>
+          <p>Con un responsable local que te responde y va hasta el lugar.</p>
         </article>
         <article class="card card--problem">
+          <p class="card__tag">Internet</p>
+          <span class="icon-badge"><svg class="ico"><use href="#i-pulse"/></svg></span>
+          <h3>Internet anda lento justo cuando más lo necesitás</h3>
+          <p>Revisamos la conexión y la red interna para encontrar dónde se frena.</p>
+        </article>
+        <article class="card card--problem">
+          <p class="card__tag">Soporte IT</p>
           <span class="icon-badge"><svg class="ico"><use href="#i-db"/></svg></span>
           <h3>No sabés si tus backups funcionan</h3>
           <p>Probamos las copias de verdad, restaurándolas, y te avisamos si algo falla.</p>
         </article>
         <article class="card card--problem">
-          <span class="icon-badge"><svg class="ico"><use href="#i-wifi"/></svg></span>
-          <h3>El WiFi no llega o anda lento</h3>
-          <p>Medimos, diseñamos y configuramos la red para que cubra toda la oficina o el depósito.</p>
-        </article>
-        <article class="card card--problem">
+          <p class="card__tag">Soporte IT</p>
           <span class="icon-badge"><svg class="ico"><use href="#i-wrench"/></svg></span>
           <h3>Pagás por arreglar cada cosa cuando se rompe</h3>
           <p>Con un abono fijo cubrimos el soporte y la prevención. Sabés cuánto gastás cada mes.</p>
@@ -159,44 +198,12 @@
     </div>
   </section>
 
-  <!-- 3. SERVICIOS -->
-  <section id="servicios" class="section" aria-labelledby="servicios-title">
+  <!-- 4. LÍNEA 1 · INTERNET (incluye obras de fibra y cobertura) -->
+  <section id="internet" class="section line" aria-labelledby="internet-title">
     <div class="container">
-      <header class="section__head">
-        <h2 id="servicios-title">Qué hacemos por tu empresa</h2>
-        <p>Nos ocupamos de la tecnología para que vos te ocupes del negocio.</p>
-      </header>
-      <div class="grid grid--2">
-        <article class="card service">
-          <span class="icon-badge icon-badge--blue"><svg class="ico"><use href="#i-user"/></svg></span>
-          <h3>Soporte a usuarios</h3>
-          <p>Tu equipo nos escribe y lo resolvemos: computadoras, impresoras, correo, accesos, altas y bajas de personal. <strong>Remoto y en sitio.</strong></p>
-        </article>
-        <article class="card service">
-          <span class="icon-badge icon-badge--blue"><svg class="ico"><use href="#i-server"/></svg></span>
-          <h3>Servidores y servicios</h3>
-          <p>Que los archivos, los usuarios y los sistemas de tu empresa estén seguros y funcionando, con <strong>backups probados</strong>.</p>
-          <p class="tech">Windows Server · Active Directory · Linux · Proxmox</p>
-        </article>
-        <article class="card service">
-          <span class="icon-badge icon-badge--blue"><svg class="ico"><use href="#i-network"/></svg></span>
-          <h3>Redes y WiFi</h3>
-          <p>Diseño y configuración de la red de tu oficina, <strong>enlaces entre sucursales</strong> y conexiones VPN para trabajar desde cualquier lugar.</p>
-        </article>
-        <article class="card service">
-          <span class="icon-badge icon-badge--blue"><svg class="ico"><use href="#i-pulse"/></svg></span>
-          <h3>Monitoreo</h3>
-          <p>Te avisamos <strong>antes de que algo falle</strong>: un disco por llenarse, un internet inestable o, incluso, una impresora que se queda sin tóner.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3b. INTERNET Y CONECTIVIDAD -->
-  <section id="internet" class="section section--soft" aria-labelledby="internet-title">
-    <div class="container">
-      <header class="section__head">
-        <h2 id="internet-title">Internet y conectividad</h2>
+      <header class="section__head line__head">
+        <p class="line__tag line__tag--net">Línea 1 · Internet</p>
+        <h2 id="internet-title">Internet para tu empresa</h2>
         <p>Tenemos nuestra propia red de fibra óptica hasta los edificios del microcentro de Mendoza, así que nos hacemos cargo de tu conexión de punta a punta.</p>
       </header>
       <div class="grid grid--3">
@@ -221,7 +228,7 @@
         <article class="card service card--action">
           <span class="icon-badge icon-badge--blue"><svg class="ico"><use href="#i-shield"/></svg></span>
           <h3>Internet de respaldo</h3>
-          <p>Un segundo enlace que entra solo si se corta el principal, para que la empresa no se frene.</p>
+          <p>Un segundo enlace que entra solo si se corta el principal, para que la empresa pueda seguir trabajando.</p>
           <a class="btn btn--outline btn--block" data-wa="respaldo" data-wa-tel="internet" aria-label="Consultá disponibilidad y precio: internet de respaldo" href="#cobertura">Consultá disponibilidad y precio</a>
         </article>
         <article class="card service card--action">
@@ -237,53 +244,110 @@
           <a class="btn btn--outline btn--block" data-wa="eventos" data-wa-tel="internet" aria-label="Consultá disponibilidad y precio: internet para eventos" href="#cobertura">Consultá disponibilidad y precio</a>
         </article>
       </div>
-    </div>
-  </section>
 
-  <!-- 3c. COBERTURA -->
-  <section id="cobertura" class="section" aria-labelledby="cobertura-title">
-    <div class="container coverage">
-      <div class="coverage__copy">
-        <h2 id="cobertura-title">Cobertura: ¿llegamos a tu edificio?</h2>
-        <p class="lead-sm">Estamos en el microcentro de Mendoza y crecemos cuadra por cuadra. Si todavía no llegamos a tu edificio, te avisamos cuando lleguemos, y mientras tanto podemos darte soporte y un internet de respaldo.</p>
-        <div id="zonas" class="zones" hidden>
-          <h3>Zonas donde ya llegamos</h3>
-          <ul id="zonas-lista"></ul>
+      <!-- Cobertura -->
+      <div id="cobertura" class="coverage-wrap" role="group" aria-labelledby="cobertura-title">
+        <div class="coverage">
+          <div class="coverage__copy">
+            <h3 id="cobertura-title" class="coverage__title">Cobertura: ¿llegamos a tu edificio?</h3>
+            <p class="lead-sm">Estamos en el microcentro de Mendoza y crecemos cuadra por cuadra. Si todavía no llegamos a tu edificio, te avisamos cuando lleguemos, y mientras tanto podemos darte soporte y un internet de respaldo.</p>
+            <div id="zonas" class="zones" hidden>
+              <h4>Zonas donde ya llegamos</h4>
+              <ul id="zonas-lista"></ul>
+            </div>
+          </div>
+
+          <form id="cobertura-form" class="form card" novalidate aria-labelledby="form-title">
+            <h4 id="form-title" class="form__title">Consultá tu dirección</h4>
+            <div class="field">
+              <label for="cob-nombre">Nombre</label>
+              <input id="cob-nombre" name="nombre" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="cob-direccion">Dirección (calle y altura)</label>
+              <input id="cob-direccion" name="direccion" type="text" autocomplete="off" placeholder="Ej: San Martín 1234" required>
+            </div>
+            <div class="field">
+              <label for="cob-piso">Piso / oficina <span class="opt">(opcional)</span></label>
+              <input id="cob-piso" name="piso" type="text" autocomplete="off" placeholder="Ej: 3° B">
+            </div>
+            <div class="field">
+              <label for="cob-tipo">Es para</label>
+              <select id="cob-tipo" name="tipo" required>
+                <option value="">Elegí una opción</option>
+                <option value="mi empresa">Una empresa</option>
+                <option value="mi comercio">Un comercio</option>
+                <option value="mi hogar">Un hogar</option>
+              </select>
+            </div>
+            <p id="cob-error" class="form__error" role="alert" hidden></p>
+            <button class="btn btn--wa btn--lg btn--block" type="submit">Consultar por WhatsApp</button>
+            <p class="form__hint">Se abre WhatsApp con tu consulta ya escrita. Los datos no se guardan en el sitio.</p>
+            <p id="cob-status" class="form__status" role="status" aria-live="polite" hidden></p>
+          </form>
         </div>
       </div>
 
-      <form id="cobertura-form" class="form card" novalidate aria-labelledby="form-title">
-        <h3 id="form-title">Consultá tu dirección</h3>
-        <div class="field">
-          <label for="cob-nombre">Nombre</label>
-          <input id="cob-nombre" name="nombre" type="text" autocomplete="name" required>
-        </div>
-        <div class="field">
-          <label for="cob-direccion">Dirección (calle y altura)</label>
-          <input id="cob-direccion" name="direccion" type="text" autocomplete="off" placeholder="Ej: San Martín 1234" required>
-        </div>
-        <div class="field">
-          <label for="cob-piso">Piso / oficina <span class="opt">(opcional)</span></label>
-          <input id="cob-piso" name="piso" type="text" autocomplete="off" placeholder="Ej: 3° B">
-        </div>
-        <div class="field">
-          <label for="cob-tipo">Es para</label>
-          <select id="cob-tipo" name="tipo" required>
-            <option value="">Elegí una opción</option>
-            <option value="mi empresa">Una empresa</option>
-            <option value="mi comercio">Un comercio</option>
-            <option value="mi hogar">Un hogar</option>
-          </select>
-        </div>
-        <p id="cob-error" class="form__error" role="alert" hidden></p>
-        <button class="btn btn--wa btn--lg btn--block" type="submit">Consultar por WhatsApp</button>
-        <p class="form__hint">Se abre WhatsApp con tu consulta ya escrita. Los datos no se guardan en el sitio.</p>
-        <p id="cob-status" class="form__status" role="status" aria-live="polite" hidden></p>
-      </form>
+      <div class="line__cta">
+        <p>¿Preferís charlarlo directamente? Contanos qué necesitás y te respondemos por WhatsApp.</p>
+        <a class="btn btn--wa btn--lg" data-wa="internetGeneral" data-wa-tel="internet" href="#cobertura">Consultar por internet</a>
+      </div>
     </div>
   </section>
 
-  <!-- 3d. TODO EN UNO -->
+  <!-- 5. LÍNEA 2 · SOPORTE IT (incluye proyectos a medida) -->
+  <section id="soporte" class="section section--soft line" aria-labelledby="soporte-title">
+    <div class="container">
+      <header class="section__head line__head">
+        <p class="line__tag line__tag--sup">Línea 2 · Soporte IT</p>
+        <h2 id="soporte-title">Soporte IT para tu empresa</h2>
+        <p>Nos ocupamos de la tecnología de tu empresa con un abono mensual fijo, como si fuéramos tu área de sistemas.</p>
+      </header>
+      <div class="grid grid--2">
+        <article class="card service">
+          <span class="icon-badge icon-badge--blue"><svg class="ico"><use href="#i-user"/></svg></span>
+          <h3>Soporte a usuarios</h3>
+          <p>Tu equipo nos escribe y lo resolvemos: computadoras, impresoras, correo, accesos, altas y bajas de personal. <strong>Remoto y en sitio.</strong></p>
+        </article>
+        <article class="card service">
+          <span class="icon-badge icon-badge--blue"><svg class="ico"><use href="#i-server"/></svg></span>
+          <h3>Servidores y servicios</h3>
+          <p>Que los archivos, los usuarios y los sistemas de tu empresa estén seguros y funcionando, con <strong>backups probados</strong>.</p>
+          <p class="tech">Windows Server · Active Directory · Linux · Proxmox</p>
+        </article>
+        <article class="card service">
+          <span class="icon-badge icon-badge--blue"><svg class="ico"><use href="#i-network"/></svg></span>
+          <h3>Redes y WiFi</h3>
+          <p>Diseño y configuración de la red de tu oficina, <strong>enlaces entre sucursales</strong> y conexiones VPN para trabajar desde cualquier lugar.</p>
+        </article>
+        <article class="card service">
+          <span class="icon-badge icon-badge--blue"><svg class="ico"><use href="#i-pulse"/></svg></span>
+          <h3>Monitoreo</h3>
+          <p>Te avisamos <strong>antes de que algo falle</strong>: un disco por llenarse, un internet inestable o, incluso, una impresora que se queda sin tóner.</p>
+        </article>
+      </div>
+
+      <!-- Proyectos a medida -->
+      <div id="proyectos" class="projects-block">
+        <h3>Proyectos a medida</h3>
+        <ul class="projects projects--short">
+          <li><svg class="ico"><use href="#i-cable"/></svg><span>Cableado estructurado y racks</span></li>
+          <li><svg class="ico"><use href="#i-wifi"/></svg><span>WiFi para oficinas, depósitos y eventos masivos</span></li>
+          <li><svg class="ico"><use href="#i-building"/></svg><span>Mudanzas de oficina y diseño de red desde cero</span></li>
+          <li><svg class="ico"><use href="#i-server"/></svg><span>Implementación de servidores y sistemas</span></li>
+          <li><svg class="ico"><use href="#i-mail"/></svg><span>Dominios, correo corporativo y hosting</span></li>
+        </ul>
+        <p class="projects-block__note"><strong>Se cotizan aparte:</strong> <span data-bind="condiciones.anticipo"></span> de anticipo y <span data-bind="condiciones.saldo"></span> al finalizar. <a data-wa="proyecto" href="#diagnostico">Cotizá tu proyecto</a></p>
+      </div>
+
+      <div class="line__cta">
+        <p>Mirá los <a href="#planes">planes mensuales</a> o contanos qué necesitás y te respondemos por WhatsApp.</p>
+        <a class="btn btn--wa btn--lg" data-wa="soporte" href="#diagnostico">Consultar por soporte IT</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. TODO EN UNO -->
   <section id="todo-en-uno" class="section section--dark" aria-labelledby="todo-title">
     <div class="container">
       <header class="section__head">
@@ -311,7 +375,7 @@
         </article>
         <article class="card bundle">
           <h3>Empresa con Sucursales</h3>
-          <p class="bundle__for">Para empresas con varias sedes que tienen que estar siempre conectadas.</p>
+          <p class="bundle__for">Para empresas con varias sedes que necesitan tenerlas todas conectadas entre sí.</p>
           <ul class="checklist">
             <li>Enlaces en cada sede</li>
             <li>Conexión entre sucursales</li>
@@ -322,16 +386,16 @@
       </div>
       <div class="bundle__foot">
         <p>Si contratás internet y soporte juntos, tenés un precio especial. Consultanos.</p>
-        <a class="btn btn--wa btn--lg" data-wa="todoEnUno" data-wa-tel="internet" href="#cobertura">Consultá el precio especial</a>
+        <a class="btn btn--wa btn--lg" data-wa="todoEnUno" data-wa-tel="internet" href="#diagnostico">Consultá el precio especial</a>
       </div>
     </div>
   </section>
 
-  <!-- 4. PLANES -->
+  <!-- 7. PLANES DE SOPORTE -->
   <section id="planes" class="section section--soft" aria-labelledby="planes-title">
     <div class="container">
       <header class="section__head">
-        <h2 id="planes-title">Planes mensuales, precio fijo</h2>
+        <h2 id="planes-title">Planes de soporte mensuales, precio fijo</h2>
         <p>Un abono con horas de soporte, visitas y monitoreo incluidos. Sin sorpresas a fin de mes.</p>
       </header>
       <div id="planes-grid" class="plans"></div>
@@ -343,61 +407,12 @@
     </div>
   </section>
 
-  <!-- 5. PROYECTOS -->
-  <section id="proyectos" class="section" aria-labelledby="proyectos-title">
+  <!-- 8. NOSOTROS (experiencia + quién está detrás) -->
+  <section id="nosotros" class="section" aria-labelledby="nosotros-title">
     <div class="container">
       <header class="section__head">
-        <h2 id="proyectos-title">Proyectos a medida</h2>
-        <p>Cuando necesitás algo puntual y más grande que el soporte del día a día.</p>
-      </header>
-      <ul class="projects">
-        <li><svg class="ico"><use href="#i-cable"/></svg><span><strong>Cableado estructurado y racks</strong></span></li>
-        <li><svg class="ico"><use href="#i-wifi"/></svg><span><strong>Despliegues de WiFi</strong> para oficinas, depósitos y eventos masivos</span></li>
-        <li><svg class="ico"><use href="#i-building"/></svg><span><strong>Mudanzas de oficina</strong> y diseño de red desde cero</span></li>
-        <li><svg class="ico"><use href="#i-server"/></svg><span><strong>Implementación de servidores</strong> y sistemas</span></li>
-        <li><svg class="ico"><use href="#i-mail"/></svg><span><strong>Dominios, correo corporativo</strong> y hosting</span></li>
-      </ul>
-      <div class="projects__foot">
-        <p><strong>Se cotizan aparte:</strong> <span data-bind="condiciones.anticipo"></span> de anticipo y <span data-bind="condiciones.saldo"></span> al finalizar.</p>
-        <a class="btn btn--wa" data-wa="proyecto" href="#diagnostico">Cotizá tu proyecto</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 6. CÓMO TRABAJAMOS -->
-  <section id="como-trabajamos" class="section section--soft" aria-labelledby="como-title">
-    <div class="container">
-      <header class="section__head">
-        <h2 id="como-title">Cómo trabajamos</h2>
-        <p>Cuatro pasos, sin vueltas.</p>
-      </header>
-      <ol class="steps">
-        <li>
-          <h3>Diagnóstico sin cargo</h3>
-          <p>Revisamos tu conexión, tu red, tus equipos y tus backups.</p>
-        </li>
-        <li>
-          <h3>Propuesta con el plan que te conviene</h3>
-          <p>Te explicamos qué encontramos y qué plan se ajusta a tu empresa.</p>
-        </li>
-        <li>
-          <h3>Puesta en orden y monitoreo</h3>
-          <p>Ordenamos lo pendiente y dejamos todo monitoreado.</p>
-        </li>
-        <li>
-          <h3>Soporte y reporte mensual</h3>
-          <p>Resolvemos lo que surja y te mostramos cómo viene todo.</p>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- 7. EXPERIENCIA -->
-  <section id="experiencia" class="section" aria-labelledby="exp-title">
-    <div class="container">
-      <header class="section__head">
-        <h2 id="exp-title">Experiencia en proyectos reales</h2>
-        <p>Trabajos que hicimos, contados sin nombrar clientes.</p>
+        <h2 id="nosotros-title">Nosotros</h2>
+        <p>Experiencia en proyectos reales, contada sin nombrar clientes.</p>
       </header>
       <div class="grid grid--2">
         <article class="card case">
@@ -418,23 +433,44 @@
         </article>
       </div>
 
-      <aside class="about" aria-labelledby="about-title">
-        <div class="about__avatar" aria-hidden="true">LC</div>
-        <div>
-          <h3 id="about-title">Quién está detrás</h3>
-          <p><strong>Lautaro Celedón</strong>, sysadmin con 8 años de experiencia en IT, redes de proveedores de internet e infraestructura empresarial. Vas a hablar siempre con la misma persona, que conoce tu empresa. También organizo los eventos de la comunidad <strong>Andes Tech</strong>.</p>
-          <p class="tech">MikroTik · Cisco · Huawei · Proxmox · Linux · Windows Server · Active Directory</p>
-        </div>
-      </aside>
+      <!-- Para sumar un segundo perfil: agregá la clase "people--2" a este contenedor -->
+      <div class="people">
+        <aside class="about" aria-labelledby="about-title">
+          <div class="about__avatar" aria-hidden="true">LC</div>
+          <div>
+            <h3 id="about-title">Quién está detrás</h3>
+            <p><strong>Lautaro Celedón</strong>, sysadmin con 8 años de experiencia en IT, redes de proveedores de internet e infraestructura empresarial. Vas a hablar siempre con la misma persona, que conoce tu empresa. También organizo los eventos de la comunidad <strong>Andes Tech</strong>.</p>
+            <p class="tech">MikroTik · Cisco · Huawei · Proxmox · Linux · Windows Server · Active Directory</p>
+          </div>
+        </aside>
+
+        <!--
+          SEGUNDO PERFIL (socio del ISP): desactivado hasta que se confirme.
+          Para activarlo:
+            1) descomentá este bloque,
+            2) completá nombre, apellido, rol y texto (no inventar datos),
+            3) agregá la clase "people--2" al <div class="people"> de arriba.
+
+          <aside class="about" aria-labelledby="about2-title">
+            <div class="about__avatar" aria-hidden="true">AL</div>
+            <div>
+              <h3 id="about2-title">Quién está detrás de la red de internet</h3>
+              <p><strong>Alejandro [APELLIDO]</strong>, [rol y trayectoria: completar].</p>
+            </div>
+          </aside>
+        -->
+      </div>
     </div>
   </section>
 
-  <!-- 8. FAQ -->
+  <!-- 9. PREGUNTAS FRECUENTES -->
   <section id="preguntas" class="section section--soft" aria-labelledby="faq-title">
     <div class="container container--narrow">
       <header class="section__head">
         <h2 id="faq-title">Preguntas frecuentes</h2>
       </header>
+
+      <h3 class="faq-title">Sobre internet</h3>
       <div class="faq">
         <details>
           <summary>¿Llegan con internet a mi edificio?</summary>
@@ -445,10 +481,6 @@
           <p>Un proveedor grande te vende una conexión y atiende por un 0800. Nosotros nos hacemos cargo de la conexión, de la red interna de tu empresa y del soporte, con un responsable local que responde y va hasta el lugar.</p>
         </details>
         <details>
-          <summary>¿Tengo que contratar internet para tener soporte, o al revés?</summary>
-          <p>No. El internet y el soporte se contratan por separado. Si los contratás juntos, tenés un precio especial.</p>
-        </details>
-        <details>
           <summary>¿Puedo tener IP fija?</summary>
           <p>Sí, en los planes de internet para empresas. Consultanos por WhatsApp y te contamos cómo se contrata.</p>
         </details>
@@ -456,6 +488,14 @@
           <summary>¿Qué pasa si se corta internet?</summary>
           <p>Te avisamos y trabajamos para resolverlo. Si tenés internet de respaldo, un segundo enlace toma la posta y la empresa sigue funcionando mientras tanto.</p>
         </details>
+        <details>
+          <summary>¿Tengo que contratar internet para tener soporte, o al revés?</summary>
+          <p>No. El internet y el soporte se contratan por separado. Si los contratás juntos, tenés un precio especial.</p>
+        </details>
+      </div>
+
+      <h3 class="faq-title">Sobre soporte</h3>
+      <div class="faq">
         <details>
           <summary>¿Qué pasa si se me terminan las horas del mes?</summary>
           <p>Seguimos atendiéndote. Las horas adicionales se cobran a <strong data-bind="condiciones.horaAdicional"></strong> cada una y no se factura nada que no hayas aprobado antes.</p>
@@ -484,7 +524,32 @@
     </div>
   </section>
 
-  <!-- 9. LLAMADO FINAL -->
+  <!-- 10. CÓMO TRABAJAMOS (franja corta) -->
+  <section id="como-trabajamos" class="steps-strip" aria-labelledby="como-title">
+    <div class="container">
+      <h2 id="como-title">Cómo trabajamos</h2>
+      <ol class="steps steps--compact">
+        <li>
+          <h3>Diagnóstico sin cargo</h3>
+          <p>Revisamos tu conexión, tu red, tus equipos y tus backups.</p>
+        </li>
+        <li>
+          <h3>Propuesta a tu medida</h3>
+          <p>Te mostramos qué encontramos y qué te conviene: internet, soporte o los dos.</p>
+        </li>
+        <li>
+          <h3>Puesta en orden y monitoreo</h3>
+          <p>Ordenamos lo pendiente y dejamos todo monitoreado.</p>
+        </li>
+        <li>
+          <h3>Soporte y reporte mensual</h3>
+          <p>Resolvemos lo que surja y te mostramos cómo viene todo.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 11. LLAMADO FINAL -->
   <section id="diagnostico" class="cta" aria-labelledby="cta-title">
     <div class="container cta__inner">
       <h2 id="cta-title">Empezá con un diagnóstico sin cargo</h2>
@@ -496,8 +561,8 @@
 
 </main>
 
-<!-- 10. FOOTER -->
-<footer class="footer">
+<!-- FOOTER -->
+<footer id="contacto" class="footer">
   <div class="container footer__inner">
     <div class="footer__brand">
       <img src="assets/logo-silink.png" alt="Silink, conectados siempre" width="150" height="118" loading="lazy">
@@ -511,7 +576,7 @@
       <li><svg class="ico"><use href="#i-clock"/></svg><span>Atención: <span data-bind="site.horario"></span></span></li>
     </ul>
   </div>
-  <p class="footer__legal container">© <span id="year">2025</span> Silink. Todos los derechos reservados.</p>
+  <p class="footer__legal container">© <span id="year"></span> Silink. Todos los derechos reservados.</p>
 </footer>
 
 <a class="fab" data-wa="diagnostico" href="#diagnostico" aria-label="Escribinos por WhatsApp">
