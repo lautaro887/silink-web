@@ -6,8 +6,8 @@
   var $$ = function (sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); };
 
   /* ---------- Helpers ---------- */
-  function waLink(texto) {
-    return 'https://wa.me/' + SITE.whatsapp + '?text=' + encodeURIComponent(texto);
+  function waLink(texto, numero) {
+    return 'https://wa.me/' + (numero || SITE.whatsapp) + '?text=' + encodeURIComponent(texto);
   }
 
   function planMessage(plan) {
@@ -74,6 +74,7 @@
       'site.horario': SITE.horario,
       'site.ubicacion': SITE.ubicacion,
       'site.whatsappVisible': SITE.whatsappVisible,
+      'site.whatsappInternetVisible': SITE.whatsappInternetVisible,
       'site.email': SITE.email,
     };
     $$('[data-bind]').forEach(function (node) {
@@ -82,13 +83,72 @@
     });
   }
 
-  /* ---------- Enlaces de WhatsApp (data-wa="clave") ---------- */
+  /* ---------- Enlaces de WhatsApp (data-wa="clave"; data-wa-tel="internet" usa el número de internet) ---------- */
   function renderWhatsapp() {
     $$('[data-wa]').forEach(function (a) {
       var msg = MENSAJES_WA[a.getAttribute('data-wa')] || MENSAJES_WA.consulta;
-      a.href = waLink(msg);
+      var numero = a.getAttribute('data-wa-tel') === 'internet' ? SITE.whatsappInternet : SITE.whatsapp;
+      a.href = waLink(msg, numero);
       a.target = '_blank';
       a.rel = 'noopener';
+    });
+    // El número de internet solo se muestra en el footer si es distinto del principal
+    var extra = $('[data-internet-li]');
+    if (extra) extra.hidden = SITE.whatsappInternet === SITE.whatsapp;
+  }
+
+  /* ---------- Cobertura: lista de zonas (config) y formulario que abre WhatsApp ---------- */
+  function renderZonas() {
+    var box = $('#zonas');
+    var list = $('#zonas-lista');
+    if (!box || !list || !ZONAS_COBERTURA.length) return;
+    ZONAS_COBERTURA.forEach(function (zona) { list.appendChild(el('li', '', zona)); });
+    box.hidden = false;
+  }
+
+  function initCoverageForm() {
+    var form = $('#cobertura-form');
+    if (!form) return;
+    var error = $('#cob-error');
+    var status = $('#cob-status');
+
+    function showError(msg, field) {
+      error.textContent = msg;
+      error.hidden = false;
+      if (field) field.focus();
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var nombre = form.elements.nombre;
+      var direccion = form.elements.direccion;
+      var tipo = form.elements.tipo;
+      error.hidden = true;
+      status.hidden = true;
+
+      if (!nombre.value.trim()) return showError('Escribí tu nombre.', nombre);
+      if (!direccion.value.trim() || !/\d/.test(direccion.value)) {
+        return showError('Escribí la calle y la altura, por ejemplo: San Martín 1234.', direccion);
+      }
+      if (!tipo.value) return showError('Elegí si es para una empresa, un comercio o un hogar.', tipo);
+
+      var piso = form.elements.piso.value.trim();
+      var msg = MENSAJES_WA.cobertura
+        .replace('{direccion}', direccion.value.trim())
+        .replace('{piso}', piso ? ', piso/oficina ' + piso : '')
+        .replace('{tipo}', tipo.value)
+        .replace('{nombre}', nombre.value.trim());
+      var url = waLink(msg, SITE.whatsappInternet);
+
+      var win = window.open(url, '_blank', 'noopener');
+      status.textContent = '';
+      status.appendChild(document.createTextNode(win ? 'Se abrió WhatsApp con tu consulta. ' : 'No pudimos abrir WhatsApp automáticamente. '));
+      var link = el('a', '', 'Tocá acá si no se abrió');
+      link.href = url;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      status.appendChild(link);
+      status.hidden = false;
     });
   }
 
@@ -109,7 +169,18 @@
       '@type': 'ProfessionalService',
       '@id': SITE.url + '/#negocio',
       name: SITE.nombre,
-      description: 'Soporte y monitoreo IT para pymes de Mendoza con abono mensual fijo: soporte a usuarios, servidores, redes, WiFi y backups.',
+      description: 'Internet por fibra óptica en el microcentro de Mendoza y soporte y monitoreo IT para pymes con abono mensual fijo: conexión, red interna, servidores, backups y WiFi con un solo responsable.',
+      slogan: 'Internet, red y soporte para tu empresa, con un solo responsable',
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Servicios de Silink',
+        itemListElement: SERVICIOS_SEO.map(function (s) {
+          return {
+            '@type': 'Offer',
+            itemOffered: { '@type': 'Service', name: s.nombre, description: s.descripcion, areaServed: SITE.zonaDeServicio },
+          };
+        }),
+      },
       url: SITE.url + '/',
       image: SITE.url + '/assets/og-image.png',
       logo: SITE.url + '/assets/logo-silink.png',
@@ -202,6 +273,8 @@
   renderBindings();
   renderWhatsapp();
   renderEmail();
+  renderZonas();
+  initCoverageForm();
   renderJsonLd();
   initMenu();
   initFloatingButton();
