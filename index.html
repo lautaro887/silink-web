@@ -38,7 +38,7 @@
 <script src="js/layout.js"></script>
 
 <noscript>
-  <p class="noscript">Para usar los botones activá JavaScript, o escribinos directo por WhatsApp: <a href="https://wa.me/5492612407449">+54 9 261 240-7449</a>. Páginas: <a href="soporte.html">Soporte informático</a> · <a href="internet.html">Internet</a> · <a href="camaras.html">Cámaras</a> · <a href="juntos.html">Juntos</a> · <a href="ayuda.html">Ayuda</a> · <a href="nosotros.html">Nosotros</a>.</p>
+  <p class="noscript">Para usar los botones activá JavaScript, o escribinos directo por WhatsApp: <a href="https://wa.me/5492612407449">+54 9 261 240-7449</a>. Páginas: <a href="soporte.html">Soporte informático</a> · <a href="internet.html">Internet</a> · <a href="camaras.html">Cámaras</a> · <a href="#juntos">Juntos</a> · <a href="ayuda.html">Ayuda</a> · <a href="nosotros.html">Nosotros</a>.</p>
 </noscript>
 
 <main id="contenido">
@@ -105,7 +105,7 @@
           <div><strong>Cámaras de seguridad</strong><span>Cámaras que graban y que ves en vivo desde el celular.</span></div>
           <span class="btn btn--outline btn--sm">Ver cámaras</span>
         </a>
-        <a class="strip-link strip-link--all" href="juntos.html">
+        <a class="strip-link strip-link--all" href="#juntos">
           <span class="strand strand--stack" aria-hidden="true"><span class="strand__sup"></span><span class="strand__net"></span><span class="strand__cam"></span></span>
           <div><strong>Todo junto</strong><span>Soporte, internet y cámaras con un solo responsable. Si los combinás, precio especial.</span></div>
           <span class="btn btn--outline btn--sm">Ver paquetes</span>
@@ -167,6 +167,132 @@
       <p>Revisamos tu conexión, red, equipos, backups y seguridad y te dejamos un informe con prioridades.</p>
       <a class="btn btn--wa btn--lg" data-wa="diagnostico" href="#contacto">Pedí tu diagnóstico por WhatsApp</a>
       <p class="cta__small">Sin compromiso. Te respondemos por WhatsApp en horario de atención.</p>
+    </div>
+  </section>
+
+  <!-- 8. TODO JUNTO: qué hace cada servicio -->
+  <section id="juntos" class="section juntos" aria-labelledby="juntos-title">
+    <div class="strand-band" aria-hidden="true"></div>
+    <div class="container">
+      <header class="section__head">
+        <h2 id="juntos-title">Soporte informático, internet y cámaras, juntos o por separado</h2>
+        <p>Cada servicio funciona solo. Si los combinás, tenés un precio especial y un único equipo local que responde por todo.</p>
+      </header>
+      <div class="juntos__actions">
+        <a class="btn btn--wa btn--lg" data-wa="todoEnUno" data-wa-tel="internet" href="#contacto">Consultá el precio especial</a>
+        <a class="btn btn--outline btn--lg" href="#paquetes">Ver paquetes</a>
+      </div>
+
+      <div class="grid grid--stack3">
+        <article class="svc svc--sup" aria-labelledby="svc-sup">
+          <span class="icon-badge icon-badge--green"><svg class="ico"><use href="#i-wrench"/></svg></span>
+          <h3 id="svc-sup">Soporte informático</h3>
+          <p class="tagline" data-bind="textos.bajadaSoporte">Cuidamos tus computadoras, impresoras, red y sistemas</p>
+          <dl class="svc__list">
+            <div><dt>Qué es</dt><dd data-bind="textos.queEsSoporte">El equipo que cuida la tecnología que tenés adentro: computadoras, impresoras, red, correo y copias de seguridad.</dd></div>
+            <div><dt>Te resuelve</dt><dd>“La compu no imprime”, “no me llegan los mails”, “se borró un archivo”.</dd></div>
+            <div><dt>Cómo se contrata</dt><dd>Abono mensual con horas de soporte, remoto y en sitio en todo Mendoza. No importa quién te dé internet.</dd></div>
+          </dl>
+          <a class="btn btn--outline btn--block svc__link" href="soporte.html">Ver soporte</a>
+        </article>
+
+        <article class="svc svc--net" aria-labelledby="svc-net">
+          <span class="icon-badge icon-badge--blue"><svg class="ico"><use href="#i-globe"/></svg></span>
+          <h3 id="svc-net">Internet</h3>
+          <dl class="svc__list">
+            <div><dt>Qué es</dt><dd data-bind="textos.queEsInternet">La conexión que llega a tu casa, local u oficina.</dd></div>
+            <div><dt>Te resuelve</dt><dd>“Se cortó internet” o “anda lento”.</dd></div>
+            <div><dt>Cómo se contrata</dt><dd>Abono mensual. Fibra en el microcentro de Mendoza.</dd></div>
+          </dl>
+          <a class="btn btn--outline btn--block svc__link" href="internet.html">Ver internet</a>
+        </article>
+
+        <article class="svc svc--cam" aria-labelledby="svc-cam">
+          <span class="icon-badge icon-badge--blue"><svg class="ico"><use href="#i-camera"/></svg></span>
+          <h3 id="svc-cam">Cámaras de seguridad</h3>
+          <dl class="svc__list">
+            <div><dt>Qué es</dt><dd data-bind="textos.queEsCamaras">Cámaras que graban y que ves en vivo desde el celular.</dd></div>
+            <div><dt>Te resuelve</dt><dd>“Quiero ver qué pasa en el local o en casa cuando no estoy”.</dd></div>
+            <div><dt>Cómo se contrata</dt><dd>Instalación y, si querés, mantenimiento.</dd></div>
+          </dl>
+          <a class="btn btn--outline btn--block svc__link" href="camaras.html">Ver cámaras</a>
+        </article>
+      </div>
+
+      <div class="projects-strip">
+        <svg class="ico" aria-hidden="true"><use href="#i-cable"/></svg>
+        <p><strong>Proyectos.</strong> Obras puntuales: redes y cableado, fibra óptica, WiFi para oficinas y eventos. Se presupuestan aparte. <a href="soporte.html#proyectos">Ver proyectos</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. PAQUETES -->
+  <section id="paquetes" class="section section--dark" aria-labelledby="paquetes-title">
+    <div class="container">
+      <header class="section__head">
+        <h2 id="paquetes-title">Paquetes: un solo responsable</h2>
+        <p>Elegí el que se parece más a tu negocio. También podés sumarles cámaras de seguridad.</p>
+      </header>
+      <div class="grid grid--stack3">
+        <article class="card bundle card--action">
+          <h3>Comercio Conectado</h3>
+          <p class="bundle__for">Para locales que necesitan internet y WiFi que anden bien.</p>
+          <ul class="checklist">
+            <li>Internet</li>
+            <li>WiFi configurado</li>
+            <li>Soporte a demanda</li>
+          </ul>
+          <a class="btn btn--wa btn--block" data-wa="paqueteComercio" data-wa-tel="internet" aria-label="Consultá el precio especial del paquete Comercio Conectado" href="#contacto">Consultá el precio especial</a>
+        </article>
+        <article class="card bundle card--action">
+          <h3>Oficina Tranquila</h3>
+          <p class="bundle__for">Para oficinas que quieren despreocuparse de la tecnología.</p>
+          <ul class="checklist">
+            <li>Internet empresarial con IP fija</li>
+            <li>Plan de soporte Pyme</li>
+            <li>Monitoreo</li>
+          </ul>
+          <a class="btn btn--wa btn--block" data-wa="paqueteOficina" data-wa-tel="internet" aria-label="Consultá el precio especial del paquete Oficina Tranquila" href="#contacto">Consultá el precio especial</a>
+        </article>
+        <article class="card bundle card--action">
+          <h3>Empresa con Sucursales</h3>
+          <p class="bundle__for">Para empresas con varias sedes que necesitan tenerlas todas conectadas entre sí.</p>
+          <ul class="checklist">
+            <li>Enlaces en cada sede</li>
+            <li>Conexión entre sucursales</li>
+            <li>Internet de respaldo</li>
+            <li>Plan de soporte Pro</li>
+          </ul>
+          <a class="btn btn--wa btn--block" data-wa="paqueteSucursales" data-wa-tel="internet" aria-label="Consultá el precio especial del paquete Empresa con Sucursales" href="#contacto">Consultá el precio especial</a>
+        </article>
+      </div>
+      <div class="bundle__foot">
+        <p>Son independientes: podés tener internet de otro proveedor y nuestro soporte, o nuestro internet sin soporte. Si los combinás, tenés un precio especial.</p>
+        <a class="btn btn--wa btn--lg" data-wa="todoEnUno" data-wa-tel="internet" href="#contacto">Consultá el precio especial</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. PREGUNTAS FRECUENTES -->
+  <section id="preguntas" class="section" aria-labelledby="faq-title">
+    <div class="container container--narrow">
+      <header class="section__head">
+        <h2 id="faq-title">Preguntas frecuentes</h2>
+      </header>
+      <div class="faq">
+        <details>
+          <summary>¿Tengo que contratar todo junto?</summary>
+          <p>No. Soporte informático, internet y cámaras se pueden contratar por separado o juntos. Si los combinás, tenés un precio especial.</p>
+        </details>
+        <details>
+          <summary>¿Cómo funciona el precio especial?</summary>
+          <p>Contanos qué necesitás y te armamos una propuesta con los servicios que quieras combinar. Todavía no publicamos precios de los paquetes: se definen según cada caso.</p>
+        </details>
+        <details>
+          <summary>¿Puedo tener internet de otro proveedor y su soporte con ustedes?</summary>
+          <p>Sí. El soporte informático funciona con cualquier proveedor de internet.</p>
+        </details>
+      </div>
     </div>
   </section>
 

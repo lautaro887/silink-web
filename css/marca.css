@@ -172,7 +172,12 @@ body.v2[data-page="camaras"] { --accent: var(--cam); }
 /* Héroe de página interna: franja del color del servicio arriba */
 .v2 .hero--page { padding: 44px 0 44px; background: #fff; }
 .v2 .hero--page::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 10px; background: var(--accent); }
-body.v2[data-page="juntos"] .hero--page::before { background: linear-gradient(90deg, var(--sup-logo) 0 33.34%, var(--net-logo) 33.34% 66.67%, var(--cam) 66.67%); }
+/* Franja de las tres líneas: abre la sección "Todo junto" del Inicio */
+.v2 .strand-band { position: absolute; inset: 0 0 auto 0; height: 10px; background: linear-gradient(90deg, var(--sup-logo) 0 33.34%, var(--net-logo) 33.34% 66.67%, var(--cam) 66.67%); }
+.v2 .juntos { position: relative; padding: 80px 0 64px; }
+.v2 .juntos__actions { display: flex; flex-direction: column; gap: 12px; margin: 0 0 44px; }
+@media (min-width: 560px) { .v2 .juntos__actions { flex-direction: row; flex-wrap: wrap; } }
+@media (min-width: 960px) { .v2 .juntos { padding: 112px 0 96px; } }
 .v2 .hero--page .hero__copy { max-width: 880px; }
 .v2 .hero--page h1 { font-size: clamp(2rem, 7.2vw, 3.5rem); }
 @media (min-width: 960px) { .v2 .hero--page { padding: 76px 0 72px; } }

@@ -40,7 +40,6 @@ const WHATSAPP_POR_PAGINA = {
   soporte: 'soporte',
   internet: 'internet',
   camaras: 'internet',
-  juntos: 'internet',
   ayuda: 'soporte',
   nosotros: 'soporte',
 };
@@ -156,7 +155,6 @@ const MENSAJES_WA = {
   contactoSoporte: 'Hola Silink! Quiero consultar por soporte informático.',
   contactoInternet: 'Hola Silink! Quiero consultar por internet por fibra.',
   contactoCamaras: 'Hola Silink! Quiero consultar por cámaras de seguridad.',
-  contactoJuntos: 'Hola Silink! Quiero consultar por combinar internet, soporte informático y cámaras.',
   contactoAyuda: 'Hola Silink! Necesito ayuda.',
   contactoNosotros: 'Hola Silink! Quiero hacer una consulta.',
 

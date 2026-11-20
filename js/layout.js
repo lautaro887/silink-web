@@ -11,7 +11,7 @@
     ['soporte', 'soporte.html', 'Soporte informático'],
     ['internet', 'internet.html', 'Internet'],
     ['camaras', 'camaras.html', 'Cámaras'],
-    ['juntos', 'juntos.html', 'Juntos'],
+    ['juntos', 'index.html#juntos', 'Juntos'],
     ['ayuda', 'ayuda.html', 'Ayuda'],
     ['nosotros', 'nosotros.html', 'Nosotros']
   ];
