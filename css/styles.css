@@ -6,7 +6,7 @@
 :root {
   /* Marca */
   --blue: #1390C0;          /* azul del logo (decorativo, fondos grandes) */
-  --blue-700: #0E7AA6;      /* azul para texto y botones: contraste AA sobre blanco */
+  --blue-700: #0B6A8F;      /* azul para texto y botones: contraste AA también sobre franjas grises */
   --blue-900: #0A2533;      /* azul marino para titulares y secciones oscuras */
   --blue-800: #0E4560;
   --green: #42AD4C;         /* acento del logo: botones de WhatsApp */

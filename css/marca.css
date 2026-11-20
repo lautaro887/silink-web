@@ -7,7 +7,7 @@
 body.v2 {
   --ink: #0B2531;          /* texto y botones */
   --mist: #EEF3F5;         /* franjas */
-  --net: #0E7AA6;         /* Internet (profundo, cumple AA con texto blanco) */
+  --net: #0B6A8F;         /* Internet (profundo, cumple AA sobre blanco y sobre franjas grises) */
   --net-logo: #1390C0;    /* azul del logo: solo ilustración */
   --sup: #2E7D32;         /* Soporte informático (profundo) */
   --sup-logo: #42AD4C;    /* verde del logo: solo ilustración */
@@ -130,7 +130,7 @@ body.v2 {
 .v2 #por-que .card h3 { font-size: 1.3rem; }
 
 /* ---------- Quiénes somos: adelanto ---------- */
-.v2 #nosotros-adelanto { padding: 0 0 56px; background: #fff; }
+.v2 #nosotros-adelanto { margin-top: 56px; }
 .v2 #nosotros-adelanto .services-close { padding: 24px 0 0; background: none; border: 0; border-top: 3px solid var(--ink); border-radius: 0; }
 .v2 .adelanto__title { font-size: 1.6rem; }
 /* El azul significa Internet: los botones de navegación general van en Tinta */
@@ -368,3 +368,59 @@ body.v2[data-page="camaras"] { --accent: var(--cam); }
 
 /* Héroe con ilustración: los accesos ocupan todo el ancho, debajo de las dos columnas */
 .v2 .hero--art .quicknav { grid-column: 1 / -1; margin-top: 8px; }
+/* ==========================================================================
+   Revisión de calidad: contraste, tamaño de toque y micro-interacciones
+   ========================================================================== */
+/* Títulos sobre fondo oscuro: la regla global de h3 los dejaba en tinta sobre tinta */
+.v2 .about h3, .v2 .section--dark h2, .v2 .section--dark h3, .v2 .cta h2 { color: #fff; }
+
+/* Guías de Ayuda: el título de cada guía es h3 */
+.v2 .guide h3 { font-size: 1.5rem; margin: 0; }
+
+/* Enlaces dentro de texto: azul profundo (AA) y subrayado; en fondos oscuros, blanco */
+.v2 main p a:not(.btn), .v2 main li a:not(.btn):not(.strip-link) { color: var(--net); text-underline-offset: 3px; }
+.v2 .section--dark p a:not(.btn), .v2 .cta p a:not(.btn), .v2 .about p a:not(.btn), .v2 .door p a:not(.btn) { color: #fff; }
+.v2 .strip-link--cam, .v2 .strip-link--cam * { text-decoration: none; }
+
+/* Zonas de toque de 44 px o más */
+.v2 .nav a:not(.btn) { padding-block: 13px; }
+.v2 .btn--sm { min-height: 44px; }
+.v2 .footer__nav ul { gap: 0; }
+.v2 .footer__nav a { padding: 10px 0; }
+.v2 .footer a:not(.btn) { min-height: 44px; display: inline-flex; align-items: center; }
+.v2 .quicknav a { min-height: 44px; display: inline-flex; align-items: center; }
+
+/* Micro-interacciones: botones se levantan al pasar y se hunden al presionar; los accesos suben 2 px */
+.v2 .btn, .v2 .strip-link, .v2 .door { transition: transform .18s ease, background-color .18s ease, border-color .18s ease, box-shadow .18s ease; }
+@media (hover: hover) {
+  .v2 .btn:hover { transform: translateY(-1px); }
+  .v2 .strip-link:hover { transform: translateY(-2px); }
+  .v2 .nav a:not(.btn), .v2 .footer__nav a { background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 0 2px; transition: background-size .2s ease, color .15s ease; text-decoration: none; }
+  .v2 .nav a:not(.btn):hover, .v2 .footer__nav a:hover { background-size: 100% 2px; text-decoration: none; }
+}
+.v2 .btn:active { transform: translateY(1px); }
+
+/* Entrada de cada página: la barra de color del héroe se dibuja una vez */
+@keyframes barDraw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.js .v2 .hero--page::before { transform-origin: left center; animation: barDraw .7s cubic-bezier(.2, .7, .2, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .v2 .btn, .v2 .strip-link, .v2 .door { transition: none; }
+  .v2 .btn:hover, .v2 .strip-link:hover, .v2 .btn:active { transform: none; }
+  .js .v2 .hero--page::before { animation: none; }
+}
+
+/* Inicio: héroe más compacto en escritorio (el botón de cada puerta entra en la primera pantalla) */
+@media (min-width: 900px) {
+  .v2 .hero { padding: 36px 0 12px; }
+  .v2 .hero h1 { font-size: clamp(2.6rem, 4.6vw, 3.6rem); }
+  .v2 .cable__v { max-height: 320px; width: auto; justify-self: center; }
+}
+/* Analogía dentro de "Nuestros servicios" */
+.v2 .analogy { max-width: 34em; margin: 40px 0 0; padding-top: 24px; border-top: 2px solid var(--ink); font-size: clamp(1.2rem, 3vw, 1.6rem); font-weight: 600; line-height: 1.32; letter-spacing: -.012em; color: var(--ink); }
+.v2 .analogy strong { font-weight: 800; font-stretch: 112%; }
+.v2 #por-que { padding-bottom: 56px; }
+
+/* Soporte: "Cómo trabajamos" dentro de "Qué incluye" */
+.v2 .steps-block { margin-top: 48px; padding-top: 24px; border-top: 2px solid var(--ink); }
+.v2 .steps-block > h3 { font-size: 1.5rem; margin-bottom: 20px; }
+.v2 .steps h4 { font-size: 1rem; margin: 0 0 .3em; font-weight: 800; line-height: 1.2; color: var(--ink); }
