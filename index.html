@@ -27,10 +27,14 @@
   <meta name="twitter:description" content="Soluciones tecnológicas en Mendoza. Un solo responsable: soporte informático, internet por fibra y cámaras de seguridad.">
   <meta name="twitter:image" content="https://silink.com.ar/assets/og-image.png">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/inicio.css">
   <script>document.documentElement.className += ' js';</script>
 </head>
-<body data-page="inicio">
+<body data-page="inicio" class="v2">
 <script src="js/layout.js"></script>
 
 <noscript>
@@ -43,38 +47,28 @@
   <section id="inicio" class="hero" aria-labelledby="hero-title">
     <div class="container hero__inner">
       <div class="hero__copy">
-        <p class="eyebrow">Empresa local · Mendoza</p>
         <h1 id="hero-title">Soluciones tecnológicas en Mendoza. Un solo responsable.</h1>
         <p class="lead">Cuidamos tu tecnología, te conectamos y protegemos tu lugar con cámaras. Un equipo local que responde y va hasta donde estés.</p>
+        <div class="strand" aria-hidden="true"><span class="strand__sup"></span><span class="strand__net"></span><span class="strand__cam"></span></div>
       </div>
 
-      <figure class="status" aria-hidden="true">
-        <div class="status__head">
-          <span class="status__dot"></span>
-          <strong>Tu tecnología, de un vistazo</strong>
-          <span class="status__ok">Todo en orden</span>
-        </div>
-        <div class="status__group">
-          <p class="status__label">Soporte informático</p>
-          <ul class="status__list">
-            <li><svg class="ico"><use href="#i-wrench"/></svg><span>Pedidos resueltos hoy</span><em class="tag tag--ok">3</em></li>
-            <li><svg class="ico"><use href="#i-db"/></svg><span>Copias de seguridad</span><em class="tag tag--ok">OK</em></li>
-          </ul>
-        </div>
-        <div class="status__group">
-          <p class="status__label">Internet</p>
-          <ul class="status__list">
-            <li><svg class="ico"><use href="#i-globe"/></svg><span>Internet por fibra</span><em class="tag tag--ok">Funcionando</em></li>
-          </ul>
-        </div>
-        <div class="status__group">
-          <p class="status__label">Cámaras</p>
-          <ul class="status__list">
-            <li><svg class="ico"><use href="#i-camera"/></svg><span>Vista en vivo desde el celular</span><em class="tag tag--ok">En línea</em></li>
-          </ul>
-        </div>
-        <figcaption>Ejemplo ilustrativo</figcaption>
-      </figure>
+      <!-- Cable en S (vectorial, inspirado en el isotipo). Decorativo: se dibuja una vez al cargar. -->
+      <div class="cable" aria-hidden="true">
+        <svg class="cable__v" viewBox="0 0 520 600" focusable="false">
+          <path class="cable__arc" d="M20 330 Q270 120 505 330" fill="none" stroke="#42AD4C" stroke-width="9" stroke-linecap="round"/>
+          <path class="cable__tube" pathLength="1" d="M400 60C250 40 150 110 175 200C200 290 360 270 370 370C380 470 250 520 110 500" fill="none" stroke="#1390C0" stroke-width="46" stroke-linecap="round"/>
+          <path class="cable__shine" pathLength="1" d="M400 60C250 40 150 110 175 200C200 290 360 270 370 370C380 470 250 520 110 500" fill="none" stroke="#7CCBE9" stroke-width="7" stroke-linecap="round" transform="translate(-7 -9)"/>
+          <g class="cable__plug" transform="rotate(8 436 60)"><rect x="398" y="38" width="76" height="44" rx="8" fill="#59595B"/><rect x="404" y="46" width="14" height="28" rx="3" fill="#221F1F"/><rect x="424" y="46" width="40" height="28" rx="4" fill="#EAF1F4"/></g>
+          <g class="cable__plug" transform="rotate(8 72 500)"><rect x="34" y="478" width="76" height="44" rx="8" fill="#59595B"/><rect x="92" y="486" width="14" height="28" rx="3" fill="#221F1F"/><rect x="44" y="486" width="40" height="28" rx="4" fill="#EAF1F4"/></g>
+        </svg>
+        <svg class="cable__h" viewBox="0 0 600 150" focusable="false">
+          <path class="cable__arc" d="M10 120 Q300 -10 590 120" fill="none" stroke="#42AD4C" stroke-width="6" stroke-linecap="round"/>
+          <path class="cable__tube" pathLength="1" d="M90 95C190 95 210 40 300 48C390 56 380 110 470 105C505 103 520 75 530 72" fill="none" stroke="#1390C0" stroke-width="26" stroke-linecap="round"/>
+          <path class="cable__shine" pathLength="1" d="M90 95C190 95 210 40 300 48C390 56 380 110 470 105C505 103 520 75 530 72" fill="none" stroke="#7CCBE9" stroke-width="5" stroke-linecap="round" transform="translate(-3 -5)"/>
+          <g class="cable__plug"><rect x="18" y="78" width="76" height="34" rx="7" fill="#59595B"/><rect x="78" y="84" width="10" height="22" rx="2" fill="#221F1F"/><rect x="26" y="84" width="40" height="22" rx="3" fill="#EAF1F4"/></g>
+          <g class="cable__plug" transform="rotate(-6 560 72)"><rect x="522" y="55" width="76" height="34" rx="7" fill="#59595B"/><rect x="526" y="61" width="10" height="22" rx="2" fill="#221F1F"/><rect x="544" y="61" width="42" height="22" rx="3" fill="#EAF1F4"/></g>
+        </svg>
+      </div>
     </div>
   </section>
 
@@ -106,13 +100,13 @@
       </div>
 
       <div class="strips">
-        <a class="strip-link" href="camaras.html">
+        <a class="strip-link strip-link--cam" href="camaras.html">
           <svg class="ico" aria-hidden="true"><use href="#i-camera"/></svg>
           <div><strong>Cámaras de seguridad</strong><span>Cámaras que graban y que ves en vivo desde el celular.</span></div>
           <span class="btn btn--outline btn--sm">Ver cámaras</span>
         </a>
-        <a class="strip-link" href="juntos.html">
-          <svg class="ico" aria-hidden="true"><use href="#i-network"/></svg>
+        <a class="strip-link strip-link--all" href="juntos.html">
+          <span class="strand strand--stack" aria-hidden="true"><span class="strand__sup"></span><span class="strand__net"></span><span class="strand__cam"></span></span>
           <div><strong>Todo junto</strong><span>Soporte, internet y cámaras con un solo responsable. Si los combinás, precio especial.</span></div>
           <span class="btn btn--outline btn--sm">Ver paquetes</span>
         </a>
