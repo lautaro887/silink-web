@@ -72,9 +72,21 @@ const SERVICIOS_SEO = [
   { nombre: 'Obras de fibra óptica', descripcion: 'Tendidos de fibra en edificios, parques y predios privados, y enlaces entre edificios.' },
   { nombre: 'Conexión entre sucursales (VPN)', descripcion: 'Red privada y segura entre oficinas, administrada y monitoreada.' },
   { nombre: 'Internet y WiFi para eventos', descripcion: 'Conectividad WiFi para eventos multitudinarios con monitoreo en vivo.' },
-  { nombre: 'Soporte y monitoreo IT para pymes', descripcion: 'Soporte a usuarios, servidores, redes y backups con abono mensual fijo.' },
+  { nombre: 'Soporte informático y monitoreo', descripcion: 'Cuidamos tus computadoras, impresoras, red y sistemas con abono mensual fijo, remoto y en sitio en todo Mendoza.' },
   { nombre: 'Cámaras de seguridad', descripcion: 'Instalación de cámaras IP con grabación y vista en vivo desde el celular, para empresas, comercios, hogares y espacios comunes de edificios.' },
 ];
+
+/* --- Textos que se repiten en varias páginas --------------------------------
+   Se editan acá y se actualizan en todo el sitio (data-bind="textos.clave").
+   ------------------------------------------------------------------------ */
+const TEXTOS = {
+  // Bajada fija cada vez que se presenta el soporte informático
+  bajadaSoporte: 'Cuidamos tus computadoras, impresoras, red y sistemas',
+  // Línea "Qué es" de cada servicio
+  queEsInternet: 'La conexión que llega a tu casa, local u oficina.',
+  queEsSoporte: 'El equipo que cuida la tecnología que tenés adentro: computadoras, impresoras, red, correo y copias de seguridad.',
+  queEsCamaras: 'Cámaras que graban y que ves en vivo desde el celular.',
+};
 
 /* --- Condiciones comerciales (se usan debajo de los planes y en las preguntas frecuentes) --- */
 const CONDICIONES = {
@@ -139,8 +151,8 @@ const PLANES = [
 const MENSAJES_WA = {
   /* Botón "Contacto" del menú (uno por página) */
   contacto: 'Hola Silink! Quiero hacer una consulta.',
-  contactoInicio: 'Hola Silink! Quiero consultar por sus servicios de internet, soporte IT o cámaras.',
-  contactoEmpresas: 'Hola Silink! Quiero consultar por internet, soporte IT o cámaras para mi empresa.',
+  contactoInicio: 'Hola Silink! Quiero consultar por sus servicios de internet, soporte informático o cámaras.',
+  contactoEmpresas: 'Hola Silink! Quiero consultar por internet, soporte informático o cámaras para mi empresa.',
   contactoComercios: 'Hola Silink! Quiero consultar por internet, WiFi o cámaras para mi comercio.',
   contactoHogares: 'Hola Silink! Quiero consultar por internet por fibra para mi hogar.',
   contactoEdificios: 'Hola Silink! Quiero consultar por fibra óptica para un edificio o consorcio.',
@@ -148,17 +160,17 @@ const MENSAJES_WA = {
 
   /* Generales */
   consulta: 'Hola Silink! Tengo una consulta sobre sus servicios.',
-  diagnostico: 'Hola Silink! Quiero pedir el diagnóstico IT sin cargo.',
-  todoEnUno: 'Hola Silink! Quiero consultar por el precio especial de internet + soporte IT + cámaras.',
+  diagnostico: 'Hola Silink! Quiero pedir el diagnóstico sin cargo.',
+  todoEnUno: 'Hola Silink! Quiero consultar por el precio especial de combinar internet, soporte informático y cámaras.',
 
   /* Empresas */
-  diagnosticoEmpresas: 'Hola Silink! Quiero pedir el diagnóstico IT sin cargo para mi empresa.',
+  diagnosticoEmpresas: 'Hola Silink! Quiero pedir el diagnóstico sin cargo para mi empresa.',
   internetEmpresas: 'Hola Silink! Quiero consultar disponibilidad y precio de internet para mi empresa (conexión simétrica con IP fija).',
   respaldo: 'Hola Silink! Quiero consultar disponibilidad y precio de un internet de respaldo para mi empresa.',
   sucursales: 'Hola Silink! Quiero consultar por una conexión privada y segura entre mis sucursales.',
-  soporte: 'Hola Silink! Quiero consultar por soporte IT para mi empresa.',
+  soporte: 'Hola Silink! Quiero consultar por soporte informático para mi empresa.',
   camarasEmpresas: 'Hola Silink! Quiero consultar por cámaras y control de acceso para mi empresa (oficina o depósito).',
-  paquetesEmpresas: 'Hola Silink! Quiero consultar por el precio especial de internet + soporte IT para mi empresa.',
+  paquetesEmpresas: 'Hola Silink! Quiero consultar por el precio especial de combinar internet y soporte informático para mi empresa.',
   proyecto: 'Hola Silink! Quiero cotizar un proyecto (cableado, WiFi, mudanza de oficina, servidores o dominios/correo). Les cuento qué necesito:',
   fibra: 'Hola Silink! Quiero consultar por una obra de fibra óptica (tendido en edificio o predio, o enlace entre edificios).',
   eventos: 'Hola Silink! Quiero consultar por internet y WiFi para un evento.',

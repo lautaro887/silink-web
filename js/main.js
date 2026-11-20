@@ -87,6 +87,10 @@
       'site.whatsappInternetVisible': SITE.whatsappInternetVisible,
       'site.email': SITE.email,
       'ayuda.appCamaras': AYUDA.appCamaras,
+      'textos.bajadaSoporte': TEXTOS.bajadaSoporte,
+      'textos.queEsInternet': TEXTOS.queEsInternet,
+      'textos.queEsSoporte': TEXTOS.queEsSoporte,
+      'textos.queEsCamaras': TEXTOS.queEsCamaras,
     };
     $$('[data-bind]').forEach(function (node) {
       var value = values[node.getAttribute('data-bind')];
@@ -210,8 +214,8 @@
       '@type': 'ProfessionalService',
       '@id': SITE.url + '/#negocio',
       name: SITE.nombre,
-      description: 'Internet por fibra óptica en el microcentro de Mendoza, soporte y monitoreo IT en todo Mendoza y cámaras de seguridad, con un responsable local que responde.',
-      slogan: 'Internet, soporte informático y cámaras de seguridad en Mendoza',
+      description: 'Soluciones tecnológicas en Mendoza: internet por fibra óptica en el microcentro, soporte informático en todo Mendoza, cámaras de seguridad y proyectos de redes, con un equipo local que responde.',
+      slogan: 'Resolvemos la tecnología de tu empresa, tu comercio o tu hogar',
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'Servicios de Silink',

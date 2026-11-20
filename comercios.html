@@ -46,7 +46,7 @@
         <h1 id="hero-title">Internet, WiFi y cámaras para que tu local funcione sin problemas</h1>
         <p class="lead">Fibra para el local, WiFi para tus clientes y cámaras para cuidar lo tuyo, con un responsable local que responde.</p>
         <div class="hero__actions">
-          <a class="btn btn--blue btn--lg" href="index.html#cobertura">¿Llegamos a tu local?</a>
+          <a class="btn btn--blue btn--lg" href="#cobertura">¿Llegamos a tu local?</a>
           <a class="btn btn--ghost btn--lg" data-wa="diagnosticoComercios" href="#contacto">Pedí un diagnóstico sin cargo</a>
         </div>
       </div>
@@ -58,6 +58,7 @@
     <div class="container">
       <header class="section__head">
         <h2 id="internet-title">Internet por fibra y WiFi para tu local</h2>
+        <p class="que-es"><strong>Qué es</strong> <span data-bind="textos.queEsInternet">La conexión que llega a tu casa, local u oficina.</span></p>
         <p>Tenemos nuestra propia red de fibra óptica hasta los edificios del microcentro de Mendoza.</p>
       </header>
       <div class="grid grid--2">
@@ -74,12 +75,59 @@
           <a class="btn btn--outline btn--block" data-wa="wifiComercios" data-wa-tel="internet" aria-label="Consultá disponibilidad y precio: WiFi para clientes" href="#contacto">Consultá disponibilidad y precio</a>
         </article>
       </div>
-      <p class="note-link">¿Llegamos a tu dirección? <a href="index.html#cobertura">Consultá la cobertura</a>.</p>
+    </div>
+  </section>
+
+  <!-- COBERTURA -->
+  <section id="cobertura" class="section section--soft" aria-labelledby="cobertura-title">
+    <div class="container">
+      <div class="coverage-wrap">
+        <div class="coverage">
+          <div class="coverage__copy">
+            <h2 id="cobertura-title" class="coverage__title">¿Llegamos a tu local?</h2>
+            <p class="lead-sm">Estamos en el microcentro de Mendoza y crecemos cuadra por cuadra. Si todavía no llegamos a tu local, te avisamos cuando lleguemos, y mientras tanto podemos darte soporte y un internet de respaldo.</p>
+            <div class="zones" hidden>
+              <h3>Zonas donde ya llegamos</h3>
+              <ul></ul>
+            </div>
+          </div>
+
+          <form id="cobertura-form" class="form card" novalidate data-wa-form="cobertura" data-wa-tel="internet" aria-labelledby="form-title">
+            <h3 id="form-title" class="form__title">Consultá tu dirección</h3>
+            <div class="field">
+              <label for="cob-nombre">Nombre</label>
+              <input id="cob-nombre" name="nombre" type="text" autocomplete="name" required data-error="Escribí tu nombre.">
+            </div>
+            <div class="field">
+              <label for="cob-direccion">Dirección (calle y altura)</label>
+              <input id="cob-direccion" name="direccion" type="text" autocomplete="off" placeholder="Ej: San Martín 1234" required data-needs-number data-error="Escribí la calle y la altura, por ejemplo: San Martín 1234.">
+            </div>
+            <div class="field">
+              <label for="cob-piso">Piso / local <span class="opt">(opcional)</span></label>
+              <input id="cob-piso" name="piso" type="text" autocomplete="off" placeholder="Ej: Local 4" data-prefix=", piso/oficina ">
+            </div>
+            <div class="field">
+              <label for="cob-tipo">Es para</label>
+              <select id="cob-tipo" name="tipo" required data-error="Elegí qué tipo de lugar es.">
+                <option value="">Elegí una opción</option>
+                <option value="mi comercio" selected>Un comercio</option>
+                <option value="mi empresa">Una empresa</option>
+                <option value="mi hogar">Un hogar</option>
+                <option value="mi edificio o consorcio">Un edificio / consorcio</option>
+              </select>
+            </div>
+            <p class="form__error" role="alert" hidden></p>
+            <button class="btn btn--wa btn--lg btn--block" type="submit">Consultar por WhatsApp</button>
+            <p class="form__hint">Se abre WhatsApp con tu consulta ya escrita. Los datos no se guardan en el sitio.</p>
+            <p class="form__status" role="status" aria-live="polite" hidden></p>
+          </form>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- CÁMARAS -->
-  <section id="camaras" class="section section--soft" aria-labelledby="camaras-title">
+  <section id="camaras" class="section" aria-labelledby="camaras-title">
     <div class="container">
       <header class="section__head">
         <h2 id="camaras-title">Cámaras de seguridad con vista desde el celular</h2>
@@ -99,11 +147,12 @@
   </section>
 
   <!-- SOPORTE A DEMANDA -->
-  <section id="soporte" class="section" aria-labelledby="soporte-title">
+  <section id="soporte" class="section section--soft" aria-labelledby="soporte-title">
     <div class="container">
       <header class="section__head">
-        <h2 id="soporte-title">Soporte a demanda para tu local</h2>
-        <p>Cuando se traba una computadora, la impresora no anda o falla la red del local, escribinos y lo resolvemos.</p>
+        <h2 id="soporte-title">Soporte informático a demanda para tu local</h2>
+        <p class="tagline" data-bind="textos.bajadaSoporte">Cuidamos tus computadoras, impresoras, red y sistemas</p>
+        <p class="que-es"><strong>Qué es</strong> <span data-bind="textos.queEsSoporte">El equipo que cuida la tecnología que tenés adentro: computadoras, impresoras, red, correo y copias de seguridad.</span></p>
       </header>
       <ul class="projects">
         <li><svg class="ico"><use href="#i-user"/></svg><span><strong>Computadoras</strong> del local</span></li>
@@ -148,8 +197,12 @@
       </header>
       <div class="faq">
         <details>
+          <summary>¿Cuál es la diferencia entre internet y soporte informático?</summary>
+          <p>Internet es como el agua que llega a tu edificio. El soporte informático es el plomero que cuida las cañerías y las canillas de adentro: computadoras, impresoras, red y sistemas. Podés contratar uno, el otro o los dos.</p>
+        </details>
+        <details>
           <summary>¿Llegan con internet a mi local?</summary>
-          <p>Estamos en el microcentro de Mendoza y crecemos cuadra por cuadra. Completá el <a href="index.html#cobertura">formulario de cobertura</a> con tu dirección y te respondemos por WhatsApp. Si todavía no llegamos, te avisamos cuando lleguemos y, mientras tanto, podemos darte soporte y un internet de respaldo.</p>
+          <p>Estamos en el microcentro de Mendoza y crecemos cuadra por cuadra. Completá el <a href="#cobertura">formulario de cobertura</a> con tu dirección y te respondemos por WhatsApp. Si todavía no llegamos, te avisamos cuando lleguemos y, mientras tanto, podemos darte soporte y un internet de respaldo.</p>
         </details>
         <details>
           <summary>¿El WiFi de los clientes afecta mi sistema?</summary>

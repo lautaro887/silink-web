@@ -72,7 +72,7 @@
       '<div class="container footer__inner">' +
         '<div class="footer__brand">' +
           '<a href="index.html"><img src="assets/logo-silink.png" alt="Silink, conectados siempre" width="150" height="118" loading="lazy"></a>' +
-          '<p class="footer__about">Internet por fibra, soporte IT y cámaras de seguridad para empresas, comercios, hogares y edificios de Mendoza.</p>' +
+          '<p class="footer__about">Soluciones tecnológicas en Mendoza: internet por fibra, soporte informático y cámaras de seguridad para empresas, comercios, hogares y edificios.</p>' +
         '</div>' +
         '<nav class="footer__nav" aria-label="Páginas del sitio"><p class="footer__h">Páginas</p><ul>' + linkList(FOOTER_NAV, true) + '</ul></nav>' +
         '<div><p class="footer__h">Contacto</p><ul class="footer__list">' +
