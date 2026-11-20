@@ -328,6 +328,89 @@
       obs.observe(art);
     });
   }
+  /* ---------- Movimiento al desplazarse (solo Inicio) ----------
+     Cada bloque se comporta distinto: entra desde un lado, escalonado, se escribe con el scroll,
+     se dibuja o se abre. Todo con transform, opacity y clip-path. Con "reducir movimiento" o sin
+     IntersectionObserver no se hace nada y la página queda en su estado final. */
+  function initScrollFx() {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) return;
+    var items = $$('[data-fx], [data-fx-stagger] > *');
+    var scrubs = $$('[data-scrub], [data-parallax], [data-words]');
+    if (!items.length && !scrubs.length) return;
+    document.documentElement.classList.add('fx');
+
+    /* Entradas */
+    $$('[data-fx-stagger]').forEach(function (box) {
+      var side = box.getAttribute('data-fx-stagger') === 'side';
+      Array.prototype.forEach.call(box.children, function (el, i) {
+        el.setAttribute('data-fx', side ? (i % 2 ? 'right' : 'left') : 'up');
+        el.style.setProperty('--d', (i * 90) + 'ms');
+      });
+    });
+    var pending = [];
+    function reveal(el) {
+      if (el.classList.contains('is-in')) return;
+      el.classList.add('is-in');
+      io.unobserve(el);
+      pending = pending.filter(function (p) { return p !== el; });
+      var delay = parseFloat((el.style.getPropertyValue('--d') || '0')) || 0;
+      // Terminada la entrada se quita el atributo: el hover vuelve a ser inmediato
+      setTimeout(function () { el.removeAttribute('data-fx'); el.classList.remove('is-in'); }, 750 + delay);
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) reveal(e.target); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
+    $$('[data-fx]').forEach(function (el) { pending.push(el); io.observe(el); });
+
+    /* Texto que se "escribe": cada palabra pasa de apagada a tinta según el scroll */
+    function wrapWords(node, list) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (n) {
+        if (n.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          n.nodeValue.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+            var s = document.createElement('span'); s.className = 'w'; s.textContent = part;
+            list.push(s); frag.appendChild(s);
+          });
+          node.replaceChild(frag, n);
+        } else if (n.nodeType === 1) wrapWords(n, list);
+      });
+    }
+    var state = scrubs.map(function (el) {
+      var s = { el: el, kind: el.hasAttribute('data-words') ? 'words' : el.hasAttribute('data-parallax') ? 'parallax' : 'scrub', last: -1, words: [] };
+      if (s.kind === 'words') wrapWords(el, s.words);
+      return s;
+    });
+
+    var ticking = false;
+    function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+    function update() {
+      ticking = false;
+      var vh = window.innerHeight;
+      // Lo que quedó arriba por un salto (ancla, tecla Fin, scroll rápido) se muestra de inmediato
+      pending.slice().forEach(function (el) { if (el.getBoundingClientRect().bottom < 0) reveal(el); });
+      state.forEach(function (s) {
+        var r = s.el.getBoundingClientRect(), p;
+        if (s.kind === 'parallax') p = clamp(-r.top / Math.max(r.height, 1));
+        else if (s.kind === 'words') p = clamp((vh * 0.9 - r.top) / (vh * 0.5 + r.height * 0.5));
+        else p = clamp((vh * 0.92 - r.top) / (vh * 0.5));
+        if (s.kind === 'words') {
+          var n = Math.round(p * s.words.length);
+          if (n !== s.last) { s.words.forEach(function (w, i) { w.classList.toggle('on', i < n); }); s.last = n; }
+        } else {
+          var v = Math.round(p * 500) / 500;
+          if (v !== s.last) { s.el.style.setProperty('--p', v); s.last = v; }
+        }
+      });
+    }
+    function onScroll() { if (!ticking) { ticking = true; window.requestAnimationFrame(update); } }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
+  }
+
   /* ---------- Inicio (espera a que layout.js haya insertado el footer) ---------- */
   function init() {
     renderPlanes();
@@ -342,6 +425,7 @@
     initFloatingButton();
     initFaq();
     initHeroArt();
+    initScrollFx(); // al final: los planes y el resto ya están en el DOM
 
     var year = $('#year');
     if (year) year.textContent = new Date().getFullYear();

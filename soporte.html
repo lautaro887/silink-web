@@ -44,7 +44,7 @@
 <main id="contenido">
 
   <!-- HERO -->
-  <section class="hero hero--page hero--art" aria-labelledby="hero-title">
+  <section class="hero hero--page hero--art" data-parallax aria-labelledby="hero-title">
     <div class="container hero__inner">
       <div class="hero__copy">
         <p class="eyebrow">Para empresas y comercios · Todo Mendoza</p>
@@ -125,7 +125,7 @@
         <h2 id="problemas-title">¿Te suena alguna de estas?</h2>
         <p>Son los dolores de cabeza más comunes en las empresas y comercios que no tienen un área de sistemas.</p>
       </header>
-      <div class="grid grid--4">
+      <div class="grid grid--4" data-fx-stagger>
         <article class="card card--problem">
           <span class="icon-badge"><svg class="ico"><use href="#i-printer"/></svg></span>
           <h3>La compu o la impresora no andan y perdés el día</h3>
@@ -157,7 +157,7 @@
         <h2 id="servicios-title">Qué incluye el soporte informático</h2>
         <p>Remoto y en sitio, en todo Mendoza. No importa quién te dé internet.</p>
       </header>
-      <div class="grid grid--2">
+      <div class="grid grid--2" data-fx-stagger="side">
         <article class="card service">
           <span class="icon-badge icon-badge--blue"><svg class="ico"><use href="#i-user"/></svg></span>
           <h3>Soporte a usuarios</h3>
@@ -183,7 +183,7 @@
 
       <div id="como-trabajamos" class="steps-block">
         <h3 id="como-title">Cómo trabajamos</h3>
-        <ol class="steps steps--compact">
+        <ol class="steps steps--compact" data-fx-stagger>
         <li>
           <h4>Diagnóstico sin cargo</h4>
           <p>Revisamos tu conexión, tu red, tus equipos y tus backups.</p>
@@ -213,7 +213,7 @@
         <p class="tagline" data-bind="textos.bajadaSoporte">Cuidamos tus computadoras, impresoras, red y sistemas</p>
         <p>Un abono mensual con horas de soporte, visitas y monitoreo incluidos. Sin sorpresas a fin de mes.</p>
       </header>
-      <div id="planes-grid" class="plans"></div>
+      <div id="planes-grid" class="plans" data-fx-stagger></div>
       <p class="plans__note">
         Precios finales en USD o en pesos al cambio del día. Hora adicional <strong data-bind="condiciones.horaAdicional"></strong>.
         Contrato mínimo de <span data-bind="condiciones.contratoMinimoMeses"></span> meses, cancelás con <span data-bind="condiciones.avisoCancelacionDias"></span> días de aviso.
@@ -303,7 +303,7 @@
   </section>
 
   <!-- LLAMADO FINAL -->
-  <section class="cta" aria-labelledby="cta-title">
+  <section class="cta" data-scrub aria-labelledby="cta-title">
     <div class="container cta__inner">
       <h2 id="cta-title">Empezá con un diagnóstico sin cargo</h2>
       <p>Revisamos tu conexión, red, equipos, backups y seguridad y te dejamos un informe con prioridades.</p>

@@ -424,3 +424,43 @@ body.v2[data-page="camaras"] { --accent: var(--cam); }
 .v2 .steps-block { margin-top: 48px; padding-top: 24px; border-top: 2px solid var(--ink); }
 .v2 .steps-block > h3 { font-size: 1.5rem; margin-bottom: 20px; }
 .v2 .steps h4 { font-size: 1rem; margin: 0 0 .3em; font-weight: 800; line-height: 1.2; color: var(--ink); }
+
+/* ==========================================================================
+   Inicio: movimiento al desplazarse (lo activa js/main.js; sin JS o con
+   "reducir movimiento" la página queda en su estado final)
+   ========================================================================== */
+/* Profundidad en el héroe: texto, cable y arco se mueven a distinta velocidad al bajar */
+.fx .hero[data-parallax] .hero__copy { transform: translateY(calc(var(--p, 0) * 18px)); }
+.fx .hero[data-parallax] .cable { transform: translateY(calc(var(--p, 0) * -44px)); }
+.fx .hero[data-parallax] .cable__arc { transform: translateY(calc(var(--p, 0) * 30px)); }
+
+/* Entradas: cada bloque llega de un lado distinto */
+.fx.js .v2 [data-fx] { opacity: 0; }
+.fx.js .v2 [data-fx="up"] { transform: translateY(26px); }
+.fx.js .v2 [data-fx="left"] { transform: translateX(-36px); }
+.fx.js .v2 [data-fx="right"] { transform: translateX(36px); }
+.fx.js .v2 [data-fx].is-in {
+  opacity: 1; transform: none;
+  transition: opacity .6s ease, transform .7s cubic-bezier(.2, .7, .2, 1);
+  transition-delay: var(--d, 0ms);
+}
+
+/* La analogía se "escribe" palabra por palabra con el scroll */
+.fx .v2 .analogy .w { color: rgba(11, 37, 49, .3); transition: color .25s ease; }
+.fx .v2 .analogy .w.on { color: var(--ink); }
+
+/* El llamado al diagnóstico se abre de tarjeta a ancho completo: es el momento fuerte del Inicio */
+.fx .cta[data-scrub] { clip-path: inset(0 calc((1 - var(--p, 1)) * 4vw) round calc((1 - var(--p, 1)) * 8px)); }
+.fx .cta[data-scrub] .cta__inner { opacity: calc(.35 + var(--p, 1) * .65); }
+
+/* Las tres líneas de la marca se dibujan al llegar a "Juntos" */
+.fx .strand-band[data-scrub] { transform: scaleX(var(--p, 1)); transform-origin: left center; }
+/* Las entradas laterales no generan scroll horizontal */
+.fx .v2 main { overflow-x: clip; }
+@media (max-width: 759px) {
+  .fx.js .v2 [data-fx="left"] { transform: translateX(-20px); }
+  .fx.js .v2 [data-fx="right"] { transform: translateX(20px); }
+}
+
+/* Páginas interiores: la ilustración del héroe sube más lento que el texto */
+.fx .hero--page[data-parallax] .hero__art { transform: translateY(calc(var(--p, 0) * -30px)); }
