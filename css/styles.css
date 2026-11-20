@@ -124,7 +124,7 @@ a { color: var(--blue-700); }
 .nav a:not(.btn) { display: block; padding: 10px 4px; color: var(--ink); text-decoration: none; font-weight: 600; }
 .nav a:not(.btn):hover { color: var(--blue-700); text-decoration: underline; text-underline-offset: 4px; }
 
-@media (max-width: 959px) {
+@media (max-width: 999px) {
   .js .nav-toggle { display: inline-flex; }
   .js .nav {
     display: none; position: absolute; left: 0; right: 0; top: 100%;
@@ -138,7 +138,7 @@ a { color: var(--blue-700); }
   .js .nav__cta { margin-top: 16px; }
   .js .nav__cta .btn { width: 100%; min-height: 50px; }
 }
-@media (min-width: 960px) {
+@media (min-width: 1000px) {
   .nav { width: auto; }
   .nav ul { align-items: center; gap: 4px 18px; flex-wrap: nowrap; }
   .nav a:not(.btn) { font-size: .97rem; }
@@ -365,11 +365,11 @@ a { color: var(--blue-700); }
 .footer__list a { color: var(--ink); font-weight: 600; }
 .footer__legal { margin: 32px auto 0; padding-top: 20px; border-top: 1px solid var(--line); font-size: .9rem; color: var(--muted); }
 @media (min-width: 760px) { .footer__inner { grid-template-columns: 1.1fr .8fr 1.3fr; gap: 48px; align-items: start; } }
-@media (max-width: 959px) { .footer { padding-bottom: 96px; } }
+@media (max-width: 999px) { .footer { padding-bottom: 96px; } }
 
 /* ---------- Botón flotante de WhatsApp (solo mobile) ---------- */
 .fab { display: none; }
-@media (max-width: 959px) {
+@media (max-width: 999px) {
   .js .fab {
     display: grid; place-items: center;
     position: fixed; z-index: 40;

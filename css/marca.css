@@ -172,6 +172,51 @@ body.v2[data-page="camaras"] { --accent: var(--cam); }
 /* Héroe de página interna: franja del color del servicio arriba */
 .v2 .hero--page { padding: 44px 0 44px; background: #fff; }
 .v2 .hero--page::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 10px; background: var(--accent); }
+/* Héroe con ilustración (Soporte): texto a la izquierda, PC + servidor a la derecha */
+.v2 .hero--art .hero__inner { display: grid; gap: 28px; align-items: center; }
+.v2 .hero__art { display: grid; place-items: center; }
+.v2 .hero__art svg { width: 100%; max-width: 360px; height: auto; }
+@media (min-width: 900px) {
+  .v2 .hero--art .hero__inner { grid-template-columns: 1.1fr .9fr; gap: 32px; }
+  .v2 .hero__art svg { max-width: 580px; }
+}
+
+/* Una sola secuencia, cuando la ilustración entra en pantalla (clase is-play, puesta por main.js):
+   aparecen los equipos, se conecta el cable y el aviso queda resuelto.
+   Sin JavaScript o con "reducir movimiento" se ve directamente el estado final (resuelto). */
+.v2 .sup-art .sg { transform-box: fill-box; transform-origin: left center; }
+.v2 .sup-art .sw { opacity: 0; }
+.js .v2 .sup-art .sf { opacity: 0; animation: sup-fade .5s var(--d, 0s) forwards paused; }
+.js .v2 .sup-art .sd { stroke-dasharray: 1 1.1; stroke-dashoffset: 1.1; animation: sup-draw var(--t, .6s) var(--d, 0s) cubic-bezier(.4, 0, .2, 1) forwards paused; }
+.js .v2 .sup-art .sg { transform: scaleX(0); animation: sup-grow .35s var(--d, 0s) cubic-bezier(.3, 0, .2, 1) forwards paused; }
+.js .v2 .sup-art .sw { animation: sup-warn 1.9s 1s forwards paused; }
+/* Cartel rojo "Error": aparece con un pequeño salto y se va cuando el aviso se resuelve */
+.v2 .sup-art .se { opacity: 0; transform-box: fill-box; transform-origin: center; }
+.js .v2 .sup-art .se { animation: sup-banner 1.55s 1.35s forwards paused; }
+/* Luces del servidor: rojas con halo que late (error) y verdes al resolverse */
+.v2 .sup-art .sh { opacity: 0; }
+.js .v2 .sup-art .sl { opacity: 0; fill: #E5484D; animation: sup-fade .4s var(--d, 0s) forwards paused, sup-blink .25s calc(var(--d, 0s) + .5s) 4 alternate paused, sup-led .3s var(--g, 3s) forwards paused; }
+.js .v2 .sup-art .sh { animation: sup-halo .4s var(--d, 0s) forwards paused, sup-pulse .25s calc(var(--d, 0s) + .5s) 4 alternate paused, sup-halo-off .3s var(--g, 3s) forwards paused; }
+.js .v2 .sup-art.is-play .sf, .js .v2 .sup-art.is-play .sd, .js .v2 .sup-art.is-play .sg, .js .v2 .sup-art.is-play .sw, .js .v2 .sup-art.is-play .sl, .js .v2 .sup-art.is-play .sh, .js .v2 .sup-art.is-play .se { animation-play-state: running; }
+@keyframes sup-fade { to { opacity: 1; } }
+@keyframes sup-draw { to { stroke-dashoffset: 0; } }
+@keyframes sup-grow { to { transform: scaleX(1); } }
+@keyframes sup-warn { 0% { opacity: 0; } 20%, 80% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes sup-banner { 0% { opacity: 0; transform: scale(.7); } 14% { opacity: 1; transform: scale(1.06); } 22% { opacity: 1; transform: scale(1); } 85% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes sup-blink { from { opacity: 1; } to { opacity: .25; } }
+@keyframes sup-led { to { fill: #42AD4C; } }
+@keyframes sup-halo { to { opacity: .3; } }
+@keyframes sup-pulse { from { opacity: .3; } to { opacity: .08; } }
+@keyframes sup-halo-off { to { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .js .v2 .sup-art .sf { opacity: 1; animation: none; }
+  .js .v2 .sup-art .sd { stroke-dasharray: none; stroke-dashoffset: 0; animation: none; }
+  .js .v2 .sup-art .sg { transform: none; animation: none; }
+  .js .v2 .sup-art .sw { opacity: 0; animation: none; }
+  .js .v2 .sup-art .sl { opacity: 1; fill: #42AD4C; animation: none; }
+  .js .v2 .sup-art .sh { opacity: 0; animation: none; }
+  .js .v2 .sup-art .se { opacity: 0; animation: none; }
+}
 /* Franja de las tres líneas: abre la sección "Todo junto" del Inicio */
 .v2 .strand-band { position: absolute; inset: 0 0 auto 0; height: 10px; background: linear-gradient(90deg, var(--sup-logo) 0 33.34%, var(--net-logo) 33.34% 66.67%, var(--cam) 66.67%); }
 .v2 .juntos { position: relative; padding: 80px 0 64px; }
@@ -290,3 +335,22 @@ body.v2[data-page="camaras"] { --accent: var(--cam); }
 .v2 .about__avatar { background: var(--net-logo); font-stretch: 112%; }
 .v2 .footer__h { color: var(--ink); font-stretch: 112%; font-weight: 800; }
 .v2 .footer__nav a[aria-current="page"] { color: var(--ink); text-decoration-color: var(--ink); }
+
+/* ==========================================================================
+   Alineación y centrado: una sola grilla de 1120 px para todo el sitio
+   ========================================================================== */
+/* El encabezado usa el mismo ancho que el contenido: logo y texto arrancan en el mismo borde */
+.v2 .header .container { max-width: 1120px; }
+
+/* Los títulos de sección no se parten antes de tiempo */
+.v2 .section__head { max-width: 760px; }
+
+/* Preguntas frecuentes: mismo borde izquierdo que el resto; solo la lista se limita para leerse bien */
+.v2 .container--narrow { max-width: 1120px; }
+.v2 .container--narrow .faq, .v2 .container--narrow .faq-title { max-width: 820px; }
+
+/* "Cómo trabajamos" en blanco: no se funde con las preguntas (fondo gris azulado) de arriba */
+.v2 .steps-strip { background: #fff; }
+
+/* Héroe con ilustración: los accesos ocupan todo el ancho, debajo de las dos columnas */
+.v2 .hero--art .quicknav { grid-column: 1 / -1; margin-top: 8px; }

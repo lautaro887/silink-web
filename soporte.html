@@ -44,7 +44,7 @@
 <main id="contenido">
 
   <!-- HERO -->
-  <section class="hero hero--page" aria-labelledby="hero-title">
+  <section class="hero hero--page hero--art" aria-labelledby="hero-title">
     <div class="container hero__inner">
       <div class="hero__copy">
         <p class="eyebrow">Para empresas y comercios · Todo Mendoza</p>
@@ -55,15 +55,66 @@
           <a class="btn btn--wa btn--lg" data-wa="diagnostico" href="#contacto">Pedí tu diagnóstico sin cargo</a>
           <a class="btn btn--ghost btn--lg" href="#planes">Ver planes</a>
         </div>
-        <ul class="quicknav" aria-label="En esta página">
-          <li><a href="#problemas">Qué te resolvemos</a></li>
-          <li><a href="#servicios-soporte">Servicios</a></li>
-          <li><a href="#planes">Planes</a></li>
-          <li><a href="#comercios">Comercios</a></li>
-          <li><a href="#proyectos">Proyectos</a></li>
-          <li><a href="#preguntas">Preguntas</a></li>
-        </ul>
       </div>
+
+      <!-- PC + servidor: un problema que se resuelve. Decorativo, se anima una sola vez al cargar. -->
+      <div class="hero__art" aria-hidden="true">
+        <svg class="sup-art" viewBox="0 0 520 400" focusable="false">
+          <!-- escritorio -->
+          <path class="sd" pathLength="1" d="M10 380 H510" fill="none" stroke="#0B2531" stroke-width="4" stroke-linecap="round" style="--d:0s;--t:.7s"/>
+          <!-- monitor -->
+          <path class="sf" d="M36 40 H304 a16 16 0 0 1 16 16 V224 a16 16 0 0 1 -16 16 H36 a16 16 0 0 1 -16 -16 V56 a16 16 0 0 1 16 -16 Z" fill="#3F4042" style="--d:.1s"/>
+          <rect class="sf" x="34" y="54" width="272" height="164" rx="6" fill="#EAF1F4" style="--d:.35s"/>
+          <path class="sd" pathLength="1" d="M170 240 V298 M110 306 H230" fill="none" stroke="#3F4042" stroke-width="16" stroke-linecap="round" style="--d:.5s;--t:.5s"/>
+          <!-- teclado -->
+          <g class="sg" style="--d:.7s">
+            <rect x="60" y="334" width="220" height="36" rx="8" fill="#3F4042"/>
+            <path d="M78 352 H262" fill="none" stroke="#8A8D90" stroke-width="4" stroke-linecap="round" stroke-dasharray="12 9"/>
+          </g>
+          <!-- servidor: cuatro unidades -->
+          <g class="sg" style="--d:.9s"><rect x="410" y="98" width="90" height="58" rx="8" fill="#3F4042"/><path d="M426 118 H466 M426 136 H466" stroke="#8A8D90" stroke-width="4" stroke-linecap="round"/></g>
+          <g class="sg" style="--d:1.05s"><rect x="410" y="168" width="90" height="58" rx="8" fill="#3F4042"/><path d="M426 188 H466 M426 206 H466" stroke="#8A8D90" stroke-width="4" stroke-linecap="round"/></g>
+          <g class="sg" style="--d:1.2s"><rect x="410" y="238" width="90" height="58" rx="8" fill="#3F4042"/><path d="M426 258 H466 M426 276 H466" stroke="#8A8D90" stroke-width="4" stroke-linecap="round"/></g>
+          <g class="sg" style="--d:1.35s"><rect x="410" y="308" width="90" height="58" rx="8" fill="#3F4042"/><path d="M426 328 H466 M426 346 H466" stroke="#8A8D90" stroke-width="4" stroke-linecap="round"/></g>
+          <!-- luces del servidor: rojas (error) con halo que late y pasan a verde al resolverse -->
+          <circle class="sh" cx="484" cy="127" r="11" fill="#E5484D" style="--d:1.5s;--g:3s"/>
+          <circle class="sl" cx="484" cy="127" r="5" fill="#42AD4C" style="--d:1.5s;--g:3s"/>
+          <circle class="sh" cx="484" cy="197" r="11" fill="#E5484D" style="--d:1.65s;--g:3.1s"/>
+          <circle class="sl" cx="484" cy="197" r="5" fill="#42AD4C" style="--d:1.65s;--g:3.1s"/>
+          <circle class="sh" cx="484" cy="267" r="11" fill="#E5484D" style="--d:1.8s;--g:3.2s"/>
+          <circle class="sl" cx="484" cy="267" r="5" fill="#42AD4C" style="--d:1.8s;--g:3.2s"/>
+          <circle class="sh" cx="484" cy="337" r="11" fill="#E5484D" style="--d:1.95s;--g:3.3s"/>
+          <circle class="sl" cx="484" cy="337" r="5" fill="#42AD4C" style="--d:1.95s;--g:3.3s"/>
+          <!-- cable verde: PC → servidor -->
+          <path class="sd" pathLength="1" d="M326 200 C372 200 358 267 404 267" fill="none" stroke="#42AD4C" stroke-width="12" stroke-linecap="round" style="--d:1.3s;--t:1s"/>
+          <rect class="sf" x="314" y="191" width="20" height="18" rx="4" fill="#59595B" style="--d:1.3s"/>
+          <rect class="sf" x="396" y="258" width="20" height="18" rx="4" fill="#59595B" style="--d:2.2s"/>
+          <!-- pantalla: aviso que se resuelve -->
+          <g class="sw">
+            <path d="M170 74 L204 132 H136 Z" fill="#F5B82E" stroke="#0B2531" stroke-width="7" stroke-linejoin="round"/>
+            <path d="M170 94 V111" stroke="#0B2531" stroke-width="7" stroke-linecap="round"/>
+            <circle cx="170" cy="122" r="3.5" fill="#0B2531"/>
+            <rect x="100" y="198" width="140" height="8" rx="4" fill="#C7D3D9"/>
+          </g>
+          <g class="se">
+            <rect x="124" y="146" width="92" height="34" rx="17" fill="#E5484D"/>
+            <text x="170" y="169" text-anchor="middle" font-size="18" font-weight="800" fill="#fff" style="font-family:inherit">Error</text>
+          </g>
+          <path class="sd" pathLength="1" d="M170 98 A38 38 0 0 1 170 174 A38 38 0 0 1 170 98" fill="none" stroke="#2E7D32" stroke-width="7" stroke-linecap="round" style="--d:2.8s;--t:.5s"/>
+          <path class="sd" pathLength="1" d="M152 137 L165 150 L190 122" fill="none" stroke="#2E7D32" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" style="--d:3.2s;--t:.4s"/>
+          <text class="sf" x="170" y="208" text-anchor="middle" font-size="16" font-weight="800" fill="#2E7D32" style="--d:3.6s;font-family:inherit">Resuelto</text>
+        </svg>
+      </div>
+
+      <!-- Accesos a las secciones: ocupan todo el ancho, debajo del texto y la ilustración -->
+      <ul class="quicknav" aria-label="En esta página">
+        <li><a href="#problemas">Qué te resolvemos</a></li>
+        <li><a href="#servicios-soporte">Servicios</a></li>
+        <li><a href="#planes">Planes</a></li>
+        <li><a href="#comercios">Comercios</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#preguntas">Preguntas</a></li>
+      </ul>
     </div>
   </section>
 
