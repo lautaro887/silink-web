@@ -37,11 +37,12 @@ const SITE = {
    ------------------------------------------------------------------------ */
 const WHATSAPP_POR_PAGINA = {
   inicio: 'soporte',
-  empresas: 'soporte',
-  comercios: 'internet',
-  hogares: 'internet',
-  edificios: 'internet',
+  soporte: 'soporte',
+  internet: 'internet',
+  camaras: 'internet',
+  juntos: 'internet',
   ayuda: 'soporte',
+  nosotros: 'soporte',
 };
 
 /* --- Zonas de cobertura de internet --------------------------------------
@@ -149,46 +150,50 @@ const PLANES = [
    el resto sale a SITE.whatsapp.
    ------------------------------------------------------------------------ */
 const MENSAJES_WA = {
-  /* Botón "Contacto" del menú (uno por página) */
+  /* Botón "Contacto" del menú (uno por página: 'contacto' + nombre de la página) */
   contacto: 'Hola Silink! Quiero hacer una consulta.',
-  contactoInicio: 'Hola Silink! Quiero consultar por sus servicios de internet, soporte informático o cámaras.',
-  contactoEmpresas: 'Hola Silink! Quiero consultar por internet, soporte informático o cámaras para mi empresa.',
-  contactoComercios: 'Hola Silink! Quiero consultar por internet, WiFi o cámaras para mi comercio.',
-  contactoHogares: 'Hola Silink! Quiero consultar por internet por fibra para mi hogar.',
-  contactoEdificios: 'Hola Silink! Quiero consultar por fibra óptica para un edificio o consorcio.',
+  contactoInicio: 'Hola Silink! Quiero consultar por sus servicios de soporte informático, internet o cámaras.',
+  contactoSoporte: 'Hola Silink! Quiero consultar por soporte informático.',
+  contactoInternet: 'Hola Silink! Quiero consultar por internet por fibra.',
+  contactoCamaras: 'Hola Silink! Quiero consultar por cámaras de seguridad.',
+  contactoJuntos: 'Hola Silink! Quiero consultar por combinar internet, soporte informático y cámaras.',
   contactoAyuda: 'Hola Silink! Necesito ayuda.',
+  contactoNosotros: 'Hola Silink! Quiero hacer una consulta.',
 
   /* Generales */
   consulta: 'Hola Silink! Tengo una consulta sobre sus servicios.',
   diagnostico: 'Hola Silink! Quiero pedir el diagnóstico sin cargo.',
-  todoEnUno: 'Hola Silink! Quiero consultar por el precio especial de combinar internet, soporte informático y cámaras.',
 
-  /* Empresas */
-  diagnosticoEmpresas: 'Hola Silink! Quiero pedir el diagnóstico sin cargo para mi empresa.',
-  internetEmpresas: 'Hola Silink! Quiero consultar disponibilidad y precio de internet para mi empresa (conexión simétrica con IP fija).',
-  respaldo: 'Hola Silink! Quiero consultar disponibilidad y precio de un internet de respaldo para mi empresa.',
-  sucursales: 'Hola Silink! Quiero consultar por una conexión privada y segura entre mis sucursales.',
+  /* Soporte informático (número de soporte) */
   soporte: 'Hola Silink! Quiero consultar por soporte informático para mi empresa.',
-  camarasEmpresas: 'Hola Silink! Quiero consultar por cámaras y control de acceso para mi empresa (oficina o depósito).',
-  paquetesEmpresas: 'Hola Silink! Quiero consultar por el precio especial de combinar internet y soporte informático para mi empresa.',
+  soporteComercios: 'Hola Silink! Quiero consultar por soporte informático a demanda para mi comercio (computadoras, impresoras y red).',
   proyecto: 'Hola Silink! Quiero cotizar un proyecto (cableado, WiFi, mudanza de oficina, servidores o dominios/correo). Les cuento qué necesito:',
-  fibra: 'Hola Silink! Quiero consultar por una obra de fibra óptica (tendido en edificio o predio, o enlace entre edificios).',
-  eventos: 'Hola Silink! Quiero consultar por internet y WiFi para un evento.',
   // Se usa para los botones de cada plan; {plan}, {moneda} y {precio} se reemplazan solos.
   plan: 'Hola Silink! Me interesa el plan {plan} ({moneda} {precio}/mes). ¿Podemos charlar para ver si es el indicado para mi empresa?',
 
-  /* Comercios */
-  diagnosticoComercios: 'Hola Silink! Quiero pedir el diagnóstico sin cargo para mi comercio.',
+  /* Internet (número de internet) */
+  internetGeneral: 'Hola Silink! Quiero consultar por internet por fibra.',
+  internetHogares: 'Hola Silink! Quiero consultar disponibilidad y precio de internet por fibra para mi hogar.',
   internetComercios: 'Hola Silink! Quiero consultar disponibilidad y precio de internet por fibra para mi comercio.',
   wifiComercios: 'Hola Silink! Quiero consultar por WiFi para los clientes de mi comercio.',
-  camarasComercios: 'Hola Silink! Quiero consultar por cámaras de seguridad para mi comercio.',
-  soporteComercios: 'Hola Silink! Quiero consultar por soporte a demanda para mi comercio (computadoras, impresoras y red).',
-  paqueteComercio: 'Hola Silink! Quiero consultar por el precio especial del paquete Comercio Conectado.',
+  internetEmpresas: 'Hola Silink! Quiero consultar disponibilidad y precio de internet para mi empresa (conexión simétrica con IP fija).',
+  respaldo: 'Hola Silink! Quiero consultar disponibilidad y precio de un internet de respaldo para mi empresa.',
+  sucursales: 'Hola Silink! Quiero consultar por una conexión privada y segura entre mis sucursales.',
+  fibra: 'Hola Silink! Quiero consultar por una obra de fibra óptica (tendido en edificio o predio, o enlace entre edificios).',
+  eventos: 'Hola Silink! Quiero consultar por internet y WiFi para un evento.',
 
-  /* Hogares */
-  internetHogares: 'Hola Silink! Quiero consultar disponibilidad y precio de internet por fibra para mi hogar.',
-  wifiHogares: 'Hola Silink! Quiero consultar por WiFi que llegue a toda mi casa.',
+  /* Cámaras (número de internet) */
+  camaras: 'Hola Silink! Quiero consultar por cámaras de seguridad.',
   camarasHogares: 'Hola Silink! Quiero consultar por cámaras de seguridad para mi hogar.',
+  camarasComercios: 'Hola Silink! Quiero consultar por cámaras de seguridad para mi comercio.',
+  camarasEmpresas: 'Hola Silink! Quiero consultar por cámaras y control de acceso para mi empresa (oficina o depósito).',
+  camarasEdificios: 'Hola Silink! Quiero consultar por cámaras y control de acceso para los espacios comunes de un edificio.',
+
+  /* Juntos (número de internet) */
+  todoEnUno: 'Hola Silink! Quiero consultar por el precio especial de combinar internet, soporte informático y cámaras.',
+  paqueteComercio: 'Hola Silink! Quiero consultar por el precio especial del paquete Comercio Conectado.',
+  paqueteOficina: 'Hola Silink! Quiero consultar por el precio especial del paquete Oficina Tranquila.',
+  paqueteSucursales: 'Hola Silink! Quiero consultar por el precio especial del paquete Empresa con Sucursales.',
 
   /* Formularios. Los {campos} se reemplazan solos con lo que escribe la persona. */
   cobertura: 'Hola, quiero saber si llegan con internet a {direccion}{piso}. Es para {tipo}. Mi nombre es {nombre}.',

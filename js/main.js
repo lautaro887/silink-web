@@ -214,8 +214,8 @@
       '@type': 'ProfessionalService',
       '@id': SITE.url + '/#negocio',
       name: SITE.nombre,
-      description: 'Soluciones tecnológicas en Mendoza: internet por fibra óptica en el microcentro, soporte informático en todo Mendoza, cámaras de seguridad y proyectos de redes, con un equipo local que responde.',
-      slogan: 'Resolvemos la tecnología de tu empresa, tu comercio o tu hogar',
+      description: 'Empresa de soluciones tecnológicas de Mendoza: soporte informático en todo Mendoza, internet por fibra óptica en el microcentro y cámaras de seguridad, con un solo responsable.',
+      slogan: 'Soluciones tecnológicas en Mendoza. Un solo responsable.',
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'Servicios de Silink',
