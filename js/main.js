@@ -316,19 +316,18 @@
     });
   }
 
-  /* ---------- Ilustración de Soporte: arranca la animación cuando entra en pantalla ---------- */
-  function initSupportArt() {
-    var art = $('.sup-art');
-    if (!art) return;
-    if (!('IntersectionObserver' in window)) { art.classList.add('is-play'); return; }
-    var obs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { art.classList.add('is-play'); obs.disconnect(); }
-      });
-    }, { threshold: 0.5 });
-    obs.observe(art);
+  /* ---------- Ilustraciones animadas (.art-anim): arrancan cuando entran en pantalla ---------- */
+  function initHeroArt() {
+    $$('.art-anim').forEach(function (art) {
+      if (!('IntersectionObserver' in window)) { art.classList.add('is-play'); return; }
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { art.classList.add('is-play'); obs.disconnect(); }
+        });
+      }, { threshold: 0.5 });
+      obs.observe(art);
+    });
   }
-
   /* ---------- Inicio (espera a que layout.js haya insertado el footer) ---------- */
   function init() {
     renderPlanes();
@@ -342,7 +341,7 @@
     initMenu();
     initFloatingButton();
     initFaq();
-    initSupportArt();
+    initHeroArt();
 
     var year = $('#year');
     if (year) year.textContent = new Date().getFullYear();

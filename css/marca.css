@@ -184,20 +184,30 @@ body.v2[data-page="camaras"] { --accent: var(--cam); }
 /* Una sola secuencia, cuando la ilustración entra en pantalla (clase is-play, puesta por main.js):
    aparecen los equipos, se conecta el cable y el aviso queda resuelto.
    Sin JavaScript o con "reducir movimiento" se ve directamente el estado final (resuelto). */
-.v2 .sup-art .sg { transform-box: fill-box; transform-origin: left center; }
-.v2 .sup-art .sw { opacity: 0; }
-.js .v2 .sup-art .sf { opacity: 0; animation: sup-fade .5s var(--d, 0s) forwards paused; }
-.js .v2 .sup-art .sd { stroke-dasharray: 1 1.1; stroke-dashoffset: 1.1; animation: sup-draw var(--t, .6s) var(--d, 0s) cubic-bezier(.4, 0, .2, 1) forwards paused; }
-.js .v2 .sup-art .sg { transform: scaleX(0); animation: sup-grow .35s var(--d, 0s) cubic-bezier(.3, 0, .2, 1) forwards paused; }
-.js .v2 .sup-art .sw { animation: sup-warn 1.9s 1s forwards paused; }
+.v2 .art-anim .sg { transform-box: fill-box; transform-origin: left center; }
+.v2 .art-anim .sw { opacity: 0; }
+.js .v2 .art-anim .sf { opacity: 0; animation: sup-fade .5s var(--d, 0s) forwards paused; }
+.js .v2 .art-anim .sd { stroke-dasharray: 1 1.1; stroke-dashoffset: 1.1; animation: sup-draw var(--t, .6s) var(--d, 0s) cubic-bezier(.4, 0, .2, 1) forwards paused; }
+.js .v2 .art-anim .sg { transform: scaleX(0); animation: sup-grow .35s var(--d, 0s) cubic-bezier(.3, 0, .2, 1) forwards paused; }
+.js .v2 .art-anim .sw { animation: sup-warn 1.9s 1s forwards paused; }
 /* Cartel rojo "Error": aparece con un pequeño salto y se va cuando el aviso se resuelve */
-.v2 .sup-art .se { opacity: 0; transform-box: fill-box; transform-origin: center; }
-.js .v2 .sup-art .se { animation: sup-banner 1.55s 1.35s forwards paused; }
+.v2 .art-anim .se { opacity: 0; transform-box: fill-box; transform-origin: center; }
+.js .v2 .art-anim .se { animation: sup-banner var(--t, 1.55s) var(--d, 1.35s) forwards paused; }
 /* Luces del servidor: rojas con halo que late (error) y verdes al resolverse */
-.v2 .sup-art .sh { opacity: 0; }
-.js .v2 .sup-art .sl { opacity: 0; fill: #E5484D; animation: sup-fade .4s var(--d, 0s) forwards paused, sup-blink .25s calc(var(--d, 0s) + .5s) 4 alternate paused, sup-led .3s var(--g, 3s) forwards paused; }
-.js .v2 .sup-art .sh { animation: sup-halo .4s var(--d, 0s) forwards paused, sup-pulse .25s calc(var(--d, 0s) + .5s) 4 alternate paused, sup-halo-off .3s var(--g, 3s) forwards paused; }
-.js .v2 .sup-art.is-play .sf, .js .v2 .sup-art.is-play .sd, .js .v2 .sup-art.is-play .sg, .js .v2 .sup-art.is-play .sw, .js .v2 .sup-art.is-play .sl, .js .v2 .sup-art.is-play .sh, .js .v2 .sup-art.is-play .se { animation-play-state: running; }
+.v2 .art-anim .sh { opacity: 0; }
+.js .v2 .art-anim .sl { opacity: 0; fill: #E5484D; animation: sup-fade .4s var(--d, 0s) forwards paused, sup-blink .25s calc(var(--d, 0s) + .5s) 4 alternate paused, sup-led .3s var(--g, 3s) forwards paused; }
+.js .v2 .art-anim .sh { animation: sup-halo .4s var(--d, 0s) forwards paused, sup-pulse .25s calc(var(--d, 0s) + .5s) 4 alternate paused, sup-halo-off .3s var(--g, 3s) forwards paused; }
+.js .v2 .art-anim.is-play .sf, .js .v2 .art-anim.is-play .sd, .js .v2 .art-anim.is-play .sg, .js .v2 .art-anim.is-play .sw, .js .v2 .art-anim.is-play .sl, .js .v2 .art-anim.is-play .sh, .js .v2 .art-anim.is-play .se { animation-play-state: running; }
+.v2 .art-anim .sp { transform-box: fill-box; transform-origin: center; }
+.v2 .art-anim .sy { transform-box: fill-box; transform-origin: 50% 0; }
+.js .v2 .art-anim .sp { opacity: 0; animation: sup-pop .45s var(--d, 0s) cubic-bezier(.3, 0, .2, 1) forwards paused; }
+.js .v2 .art-anim .sy { transform: scaleY(0); animation: sup-reveal .6s var(--d, 0s) cubic-bezier(.3, 0, .2, 1) forwards paused; }
+.js .v2 .art-anim .sk { fill: #C7D3D9; animation: sup-lit .4s var(--d, 0s) forwards paused; }
+.js .v2 .art-anim .sr { opacity: 0; animation: sup-fade .2s var(--d, 0s) forwards paused, sup-blink .3s calc(var(--d, 0s) + .3s) 6 alternate paused; }
+.js .v2 .art-anim.is-play .sp, .js .v2 .art-anim.is-play .sy, .js .v2 .art-anim.is-play .sk, .js .v2 .art-anim.is-play .sr { animation-play-state: running; }
+@keyframes sup-pop { from { opacity: 0; transform: scale(.7); } to { opacity: 1; transform: scale(1); } }
+@keyframes sup-reveal { to { transform: scaleY(1); } }
+@keyframes sup-lit { to { fill: #1390C0; } }
 @keyframes sup-fade { to { opacity: 1; } }
 @keyframes sup-draw { to { stroke-dashoffset: 0; } }
 @keyframes sup-grow { to { transform: scaleX(1); } }
@@ -209,13 +219,17 @@ body.v2[data-page="camaras"] { --accent: var(--cam); }
 @keyframes sup-pulse { from { opacity: .3; } to { opacity: .08; } }
 @keyframes sup-halo-off { to { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) {
-  .js .v2 .sup-art .sf { opacity: 1; animation: none; }
-  .js .v2 .sup-art .sd { stroke-dasharray: none; stroke-dashoffset: 0; animation: none; }
-  .js .v2 .sup-art .sg { transform: none; animation: none; }
-  .js .v2 .sup-art .sw { opacity: 0; animation: none; }
-  .js .v2 .sup-art .sl { opacity: 1; fill: #42AD4C; animation: none; }
-  .js .v2 .sup-art .sh { opacity: 0; animation: none; }
-  .js .v2 .sup-art .se { opacity: 0; animation: none; }
+  .js .v2 .art-anim .sf { opacity: 1; animation: none; }
+  .js .v2 .art-anim .sd { stroke-dasharray: none; stroke-dashoffset: 0; animation: none; }
+  .js .v2 .art-anim .sg { transform: none; animation: none; }
+  .js .v2 .art-anim .sw { opacity: 0; animation: none; }
+  .js .v2 .art-anim .sl { opacity: 1; fill: #42AD4C; animation: none; }
+  .js .v2 .art-anim .sh { opacity: 0; animation: none; }
+  .js .v2 .art-anim .se { opacity: 0; animation: none; }
+  .js .v2 .art-anim .sp { opacity: 1; animation: none; }
+  .js .v2 .art-anim .sy { transform: none; animation: none; }
+  .js .v2 .art-anim .sk { fill: #1390C0; animation: none; }
+  .js .v2 .art-anim .sr { opacity: 1; animation: none; }
 }
 /* Franja de las tres líneas: abre la sección "Todo junto" del Inicio */
 .v2 .strand-band { position: absolute; inset: 0 0 auto 0; height: 10px; background: linear-gradient(90deg, var(--sup-logo) 0 33.34%, var(--net-logo) 33.34% 66.67%, var(--cam) 66.67%); }
