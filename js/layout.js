@@ -38,6 +38,7 @@
     '<symbol id="i-cable" viewBox="0 0 24 24"><path d="M9 2v6M15 2v6"/><path d="M6 8h12v4a6 6 0 0 1-12 0V8z"/><path d="M12 18v4"/></symbol>' +
     '<symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V4a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v17"/><path d="M15 9h4a1 1 0 0 1 1 1v11M3 21h18M8 7h3M8 11h3M8 15h3"/></symbol>' +
     '<symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>' +
+    '<symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".8" fill="currentColor"/></symbol>' +
     '<symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>' +
     '<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>' +
     '<symbol id="i-printer" viewBox="0 0 24 24"><path d="M7 9V3h10v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M7 14h10v7H7z"/></symbol>' +
@@ -80,6 +81,7 @@
           '<li><svg class="ico"><use href="#i-chat"/></svg><a data-wa="consulta" data-bind="site.whatsappVisible" href="#contacto"></a></li>' +
           '<li data-internet-li hidden><svg class="ico"><use href="#i-globe"/></svg><span>Internet y cámaras: <a data-wa="consulta" data-wa-tel="internet" data-bind="site.whatsappInternetVisible" href="#contacto"></a></span></li>' +
           '<li data-email><svg class="ico"><use href="#i-mail"/></svg><a href="#"></a></li>' +
+          '<li data-instagram hidden><svg class="ico"><use href="#i-instagram"/></svg><a href="#" target="_blank" rel="noopener"></a></li>' +
           '<li><svg class="ico"><use href="#i-pin"/></svg><span data-bind="site.ubicacion"></span></li>' +
           '<li><svg class="ico"><use href="#i-clock"/></svg><span>Atención: <span data-bind="site.horario"></span></span></li>' +
         '</ul></div>' +

@@ -12,16 +12,20 @@ const SITE = {
 
   /* --- Contacto ------------------------------------------------------- */
   // WhatsApp de SOPORTE / EMPRESAS (solo números, con código de país, sin + ni espacios)
-  whatsapp: '5492612407449',
-  whatsappVisible: '+54 9 261 240-7449', // cómo se muestra en pantalla
+  whatsapp: '5492616934190',
+  whatsappVisible: '+54 9 261 693-4190', // cómo se muestra en pantalla
 
   // WhatsApp de INTERNET / HOGARES / CÁMARAS / EDIFICIOS.
   // Por ahora es el mismo número; si lo atiende otra persona, cambialo acá.
-  whatsappInternet: '5492612407449',
-  whatsappInternetVisible: '+54 9 261 240-7449',
+  whatsappInternet: '5492616934190',
+  whatsappInternetVisible: '+54 9 261 693-4190',
 
-  email: 'contacto@silink.com.ar',    // dejalo vacío ('') para ocultar el correo en todo el sitio
-  ubicacion: 'Mendoza, Argentina',
+  email: 'info@silink.com.ar',        // dejalo vacío ('') para ocultar el correo en todo el sitio
+  instagram: 'https://www.instagram.com/silinkinternet/', // vacío = no se muestra
+  instagramUsuario: '@silinkinternet',
+  ubicacion: 'San Juan 1164, Mendoza, Argentina (5500)', // cómo se muestra en el pie de página
+  direccion: 'San Juan 1164',   // calle y número, para Google
+  codigoPostal: '5500',
   horario: 'Lunes a viernes de 9 a 18',
 
   /* --- Datos para Google (JSON-LD) ------------------------------------ */
@@ -77,44 +81,44 @@ const FOTOS_EVENTOS = {
   sunsetstrip:    {
     credito: 'Sunsetstrip',
     fotos: [
-      { src: 'assets/eventos/sunsetstrip-escenario.jpg',  alt: 'Escenario de Sunsetstrip de día, con la montaña de fondo' },
-      { src: 'assets/eventos/sunsetstrip-potrerillos.jpg', alt: 'Vista aérea del público de Sunsetstrip en Potrerillos, junto al dique' },
-      { src: 'assets/eventos/sunsetstrip-noche.jpg',       alt: 'Público de Sunsetstrip de noche, con luces azules' },
-      { src: 'assets/eventos/sunsetstrip-cabina.jpg',      alt: 'El público visto desde la cabina del DJ en Sunsetstrip' },
+      { src: 'assets/eventos/sunsetstrip-escenario.jpg',  ancho: 1200, alto: 801, alt: 'Escenario de Sunsetstrip de día, con la montaña de fondo' },
+      { src: 'assets/eventos/sunsetstrip-potrerillos.jpg', ancho: 1200, alto: 799, alt: 'Vista aérea del público de Sunsetstrip en Potrerillos, junto al dique' },
+      { src: 'assets/eventos/sunsetstrip-noche.jpg',       ancho: 1200, alto: 800, alt: 'Público de Sunsetstrip de noche, con luces azules' },
+      { src: 'assets/eventos/sunsetstrip-cabina.jpg',      ancho: 1200, alto: 800, alt: 'El público visto desde la cabina del DJ en Sunsetstrip' },
     ],
   },
   primaveraFolck: {
     credito: 'Folck Producciones',
     fotos: [
-      { src: 'assets/eventos/primavera-folck-dia.jpg',   alt: 'Escenario de Primavera Folck de día, con público en el parque' },
-      { src: 'assets/eventos/primavera-folck-noche.jpg', alt: 'Escenario de Primavera Folck de noche, con pantalla y llamaradas' },
+      { src: 'assets/eventos/primavera-folck-dia.jpg',   ancho: 1000, alto: 662, alt: 'Escenario de Primavera Folck de día, con público en el parque' },
+      { src: 'assets/eventos/primavera-folck-noche.jpg', ancho: 1000, alto: 708, alt: 'Escenario de Primavera Folck de noche, con pantalla y llamaradas' },
     ],
   },
   moonfest:       {
     credito: 'Folck Producciones',
     fotos: [
-      { src: 'assets/eventos/moonfest.jpg', alt: 'Público de Moonfest junto al dique de Potrerillos' },
+      { src: 'assets/eventos/moonfest.jpg', ancho: 1200, alto: 675, alt: 'Público de Moonfest junto al dique de Potrerillos' },
     ],
   },
   fiestasFolck:   {
     credito: 'Folck Producciones',
     fotos: [
-      { src: 'assets/eventos/folck-escenario.jpg', alt: 'Escenario con luces azules y banderas del público en una fiesta Folck' },
-      { src: 'assets/eventos/folck-publico.jpg',   alt: 'El público visto desde la cabina del DJ en una fiesta Folck' },
-      { src: 'assets/eventos/folck-naranja.jpg',   alt: 'Escenario iluminado en naranja en una fiesta Folck' },
+      { src: 'assets/eventos/folck-escenario.jpg', ancho: 1400, alto: 1120, alt: 'Escenario con luces azules y banderas del público en una fiesta Folck' },
+      { src: 'assets/eventos/folck-publico.jpg',   ancho: 900, alto: 1195, alt: 'El público visto desde la cabina del DJ en una fiesta Folck' },
+      { src: 'assets/eventos/folck-naranja.jpg',   ancho: 1200, alto: 800, alt: 'Escenario iluminado en naranja en una fiesta Folck' },
     ],
   },
   terroir:        {
     credito: 'Silink',
     fotos: [
-      { src: 'assets/eventos/terroir-vinedo.webp', alt: 'Antena y equipos de conectividad instalados junto a un viñedo' },
+      { src: 'assets/eventos/terroir-vinedo.webp', ancho: 1869, alto: 821, alt: 'Antena y equipos de conectividad instalados junto a un viñedo' },
     ],
   },
   sub0:           {
     credito: 'sub0',
     fotos: [
-      { src: 'assets/eventos/sub0-cartel.jpg', alt: 'Cartel de sub0 en la entrada del evento en Buenos Aires' },
-      { src: 'assets/eventos/sub0-charla.jpg', alt: 'Charla en sub0 con pantalla gigante y público' },
+      { src: 'assets/eventos/sub0-cartel.jpg', ancho: 859, alto: 1073, alt: 'Cartel de sub0 en la entrada del evento en Buenos Aires' },
+      { src: 'assets/eventos/sub0-charla.jpg', ancho: 900, alto: 1125, alt: 'Charla en sub0 con pantalla gigante y público' },
     ],
   },
 };

@@ -200,6 +200,12 @@
         var img = el('img');
         img.alt = foto.alt || 'Foto del evento ' + nombre;
         img.loading = 'lazy';
+        // Con las medidas declaradas la página reserva el lugar y no salta al cargar
+        if (foto.ancho && foto.alto) {
+          img.width = foto.ancho;
+          img.height = foto.alto;
+          figura.style.setProperty('--r', (foto.ancho / foto.alto).toFixed(3));
+        }
         // En la galería cada foto ocupa según su proporción: todas quedan a la misma altura sin recortes
         img.onload = function () { figura.style.setProperty('--r', (img.naturalWidth / img.naturalHeight).toFixed(3)); };
         // Si la ruta está mal escrita, esa foto no se muestra
@@ -238,6 +244,16 @@
     });
   }
 
+  /* ---------- Instagram (config) ---------- */
+  function renderInstagram() {
+    var item = $('[data-instagram]');
+    if (!item || !SITE.instagram) return;
+    var link = $('a', item);
+    link.href = SITE.instagram;
+    link.textContent = 'Instagram ' + (SITE.instagramUsuario || '');
+    item.hidden = false;
+  }
+
   /* ---------- Datos estructurados (Google) ---------- */
   function renderJsonLd() {
     var canonical = $('link[rel="canonical"]');
@@ -246,7 +262,7 @@
       '@type': 'ProfessionalService',
       '@id': SITE.url + '/#negocio',
       name: SITE.nombre,
-      description: 'Empresa de soluciones tecnológicas de Mendoza: soporte tecnológico en todo Mendoza, internet por fibra óptica en el microcentro y cámaras de seguridad, todo centralizado.',
+      description: 'Empresa de soluciones tecnológicas de Mendoza: soporte informático y tecnológico, internet por fibra óptica en el microcentro, cámaras de seguridad e internet y WiFi para eventos.',
       slogan: 'Soluciones tecnológicas en Mendoza. Todo centralizado.',
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
@@ -264,6 +280,8 @@
       telephone: '+' + SITE.whatsapp,
       address: {
         '@type': 'PostalAddress',
+        streetAddress: SITE.direccion,
+        postalCode: SITE.codigoPostal,
         addressLocality: SITE.zonaDeServicio,
         addressRegion: SITE.zonaDeServicio,
         addressCountry: 'AR',
@@ -278,6 +296,7 @@
       founder: { '@type': 'Person', name: 'Lautaro Celedón' },
     };
     if (SITE.email) data.email = SITE.email;
+    if (SITE.instagram) data.sameAs = [SITE.instagram];
 
     var script = document.createElement('script');
     script.type = 'application/ld+json';
@@ -449,6 +468,7 @@
     renderBindings();
     renderWhatsapp();
     renderEmail();
+    renderInstagram();
     renderZonas();
     renderPagos();
     renderFotosEventos();
