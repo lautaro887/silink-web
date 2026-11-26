@@ -8,10 +8,10 @@
 
   /* Menú principal: [clave de página, archivo, texto] */
   var NAV = [
-    ['soporte', 'soporte.html', 'Soporte informático'],
+    ['soporte', 'soporte.html', 'Soporte tecnológico'],
     ['internet', 'internet.html', 'Internet'],
     ['camaras', 'camaras.html', 'Cámaras'],
-    ['juntos', 'index.html#juntos', 'Juntos'],
+    ['eventos', 'eventos.html', 'Eventos'],
     ['ayuda', 'ayuda.html', 'Ayuda'],
     ['nosotros', 'nosotros.html', 'Nosotros']
   ];
@@ -73,7 +73,7 @@
       '<div class="container footer__inner">' +
         '<div class="footer__brand">' +
           '<a href="index.html"><img src="assets/logo-silink.png" alt="Silink, conectados siempre" width="150" height="118" loading="lazy"></a>' +
-          '<p class="footer__about">Soluciones tecnológicas en Mendoza: soporte informático, internet por fibra y cámaras de seguridad, con un solo responsable.</p>' +
+          '<p class="footer__about">Soluciones tecnológicas en Mendoza: soporte tecnológico, internet por fibra y cámaras de seguridad, todo centralizado.</p>' +
         '</div>' +
         '<nav class="footer__nav" aria-label="Páginas del sitio"><p class="footer__h">Páginas</p><ul>' + linkList(FOOTER_NAV, true) + '</ul></nav>' +
         '<div><p class="footer__h">Contacto</p><ul class="footer__list">' +

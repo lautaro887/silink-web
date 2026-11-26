@@ -507,7 +507,6 @@ a { color: var(--blue-700); }
 .quick .ico { color: var(--blue-700); width: 26px; height: 26px; }
 
 /* Inicio: Qué hace cada servicio */
-.analogy { font-size: 1.2rem !important; color: var(--ink) !important; line-height: 1.5; }
 .section__head:has(.analogy) { max-width: 760px; }
 .svc { display: flex; flex-direction: column; padding: 24px; background: #fff; border: 1px solid var(--line); border-top: 5px solid var(--blue); border-radius: var(--radius); box-shadow: var(--shadow); }
 .svc--sup { border-top-color: var(--green); }

@@ -112,6 +112,12 @@ body.v2 {
 .v2 .strip-link--cam strong, .v2 .strip-link--cam > div > span { color: #fff; }
 .v2 .strip-link--cam .ico { color: #fff; }
 .v2 .strip-link--cam .btn { color: #fff; border-color: #fff; }
+/* Eventos: franja a todo el ancho, en tinta */
+.v2 .strip-link--events { grid-column: 1 / -1; background: var(--ink); border-color: var(--ink); color: #fff; text-decoration: none; }
+.v2 .strip-link--events:hover { background: #17394A; border-color: #17394A; }
+.v2 .strip-link--events strong, .v2 .strip-link--events > div > span, .v2 .strip-link--events .ico { color: #fff; }
+.v2 .strip-link--events .btn { color: #fff; border-color: #fff; }
+.v2 .strip-link--events:focus-visible { outline-color: var(--net-logo); }
 .v2 .strand--stack { flex-direction: column; gap: 5px; margin: 0; flex: none; }
 .v2 .strand--stack span { width: 34px; height: 7px; }
 
@@ -294,7 +300,6 @@ body.v2[data-page="camaras"] { --accent: var(--cam); }
 .v2 .svc--sup .svc__list dt { color: var(--sup); }
 .v2 .svc--net .svc__list dt { color: var(--net); }
 .v2 .svc--cam .svc__list dt { color: var(--cam); }
-.v2 .analogy { font-weight: 600 !important; letter-spacing: -.012em; }
 
 /* Planes: cajas de acción, planas y con borde de Tinta */
 .v2 .plan { background: #fff; border: 2px solid var(--ink); border-radius: 6px; box-shadow: none; }
@@ -416,7 +421,8 @@ body.v2[data-page="camaras"] { --accent: var(--cam); }
   .v2 .cable__v { max-height: 320px; width: auto; justify-self: center; }
 }
 /* Analogía dentro de "Nuestros servicios" */
-.v2 .analogy { max-width: 34em; margin: 40px 0 0; padding-top: 24px; border-top: 2px solid var(--ink); font-size: clamp(1.2rem, 3vw, 1.6rem); font-weight: 600; line-height: 1.32; letter-spacing: -.012em; color: var(--ink); }
+/* La línea ocupa todo el ancho; el texto se corta antes para leerse cómodo */
+.v2 .analogy { margin: 40px 0 0; padding: 24px max(0px, calc(100% - 36em)) 0 0; border-top: 2px solid var(--ink); font-size: clamp(1.25rem, 3vw, 1.6rem); font-weight: 600; line-height: 1.34; letter-spacing: -.012em; color: var(--ink); }
 .v2 .analogy strong { font-weight: 800; font-stretch: 112%; }
 .v2 #por-que { padding-bottom: 56px; }
 
@@ -464,3 +470,114 @@ body.v2[data-page="camaras"] { --accent: var(--cam); }
 
 /* Páginas interiores: la ilustración del héroe sube más lento que el texto */
 .fx .hero--page[data-parallax] .hero__art { transform: translateY(calc(var(--p, 0) * -30px)); }
+
+/* ---------- Ajustes de revision ---------- */
+/* Franjas con la misma separacion que las dos puertas: los bordes quedan alineados */
+@media (min-width: 900px) { .v2 .strips { gap: 24px; margin-top: 24px; } }
+/* "Conocer al equipo" en una sola linea */
+.v2 .services-close .btn { flex: none; white-space: nowrap; }
+/* Camaras: la ficha del servicio se ve igual que las tarjetas vecinas */
+.v2 main .grid .svc { border-top-width: 3px; }
+.v2 main .grid .svc h3 { font-size: 1.2rem; }
+/* Nosotros: mismo aire arriba y abajo de la ficha */
+.v2 #quien .people { margin-top: 0; }
+
+/* ==========================================================================
+   Eventos: el predio de noche. La senal llega al publico en tandas, una vez.
+   ========================================================================== */
+body.v2[data-page="eventos"] { --accent: var(--net); }
+.v2 .hero--events { padding-bottom: 40px; }
+.v2 .venue { position: relative; background: var(--ink); overflow: hidden; }
+/* La altura sigue la proporción del dibujo (1200×440); en el celular recorta los costados */
+.v2 .venue__svg { display: block; width: 100%; max-width: 1440px; margin-inline: auto; height: clamp(260px, 36.7vw, 528px); }
+@media (max-width: 759px) { .v2 .venue { padding-top: 56px; } }
+.v2 .venue__chip-wrap { position: absolute; left: 0; right: 0; top: 16px; display: flex; justify-content: flex-start; }
+.v2 .venue__chip { display: inline-flex; align-items: center; gap: 10px; margin: 0; padding: 8px 16px; border-radius: 999px; background: #fff; color: var(--ink); font-size: .9rem; font-weight: 700; }
+.v2 .venue__dot { width: 10px; height: 10px; border-radius: 50%; background: var(--sup-logo); }
+.v2 .ev-wave { fill: var(--net-logo); }
+.js .v2 .art-anim .ev-wave { fill: #2C4A59; animation: ev-on .45s var(--d, 0s) forwards paused; }
+.js .v2 .art-anim.is-play .ev-wave { animation-play-state: running; }
+@keyframes ev-on { to { fill: #1390C0; } }
+/* El aviso del monitoreo late tres veces al cargar */
+.js .v2 .venue__dot { animation: sup-blink .6s 3.6s 6 alternate; }
+@media (prefers-reduced-motion: reduce) {
+  .js .v2 .art-anim .ev-wave { fill: #1390C0; animation: none; }
+  .js .v2 .venue__dot { animation: none; }
+}
+
+/* Cartel de eventos: los nombres en grande, como la grilla de un festival */
+.v2 .lineup { list-style: none; margin: 0; padding: 0; }
+.v2 .lineup__item { display: grid; gap: 20px; align-items: center; padding: 28px 0; border-top: 2px solid rgba(255, 255, 255, .28); }
+.v2 .lineup__item:last-child { border-bottom: 2px solid rgba(255, 255, 255, .28); }
+.v2 .lineup__item h3 { margin: 0; color: #fff; font-size: clamp(2rem, 7.2vw, 4.2rem); font-stretch: 125%; line-height: 1; letter-spacing: -.03em; overflow-wrap: anywhere; }
+.v2 .lineup__item--main h3 { font-size: clamp(2.5rem, 11vw, 7rem); color: #7CCBE9; }
+.v2 .lineup__item p { margin: 10px 0 0; max-width: 32em; font-size: 1.15rem; color: #C9D9E0; }
+.v2 .lineup__item figure { margin: 0; }
+.v2 .lineup__photo img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 6px; }
+.v2 .lineup__item .lineup__credit { margin: 0; font-size: .85rem; color: #9FB8C4; max-width: none; }
+.v2 .lineup__photo .lineup__credit { margin-top: 6px; }
+/* Galeria: en el celular la primera foto va grande y las otras dos al lado */
+.v2 .lineup__gallery { display: flex; flex-wrap: wrap; gap: 8px; }
+.v2 .lineup__gallery figure { flex: var(--r, 1) 1 0; min-width: 0; }
+.v2 .lineup__gallery figure:first-child { flex-basis: 100%; }
+/* Si son exactamente dos, van una al lado de la otra también en el celular */
+.v2 .lineup__gallery figure:first-child:nth-last-of-type(2) { flex-basis: 0; }
+/* Si son cuatro: en el celular las dos primeras a todo el ancho y las otras dos juntas */
+.v2 .lineup__gallery figure:first-child:nth-last-of-type(4) + figure { flex-basis: 100%; }
+.v2 .lineup__gallery img { display: block; width: 100%; height: auto; border-radius: 6px; }
+.v2 .lineup__gallery .lineup__credit { flex-basis: 100%; }
+@media (min-width: 760px) {
+  .v2 .lineup__gallery { gap: 12px; }
+  .v2 .lineup__gallery figure:first-child { flex-basis: 0; }
+  /* Ninguna foto supera los 400 px de alto: las verticales no ocupan media pantalla */
+  .v2 .lineup__gallery figure { max-width: calc(var(--r, 1) * 400px); }
+  /* Cuatro fotos: grilla de dos por dos */
+  .v2 .lineup__gallery figure:first-child:nth-last-of-type(4),
+  .v2 .lineup__gallery figure:first-child:nth-last-of-type(4) ~ figure { flex-basis: calc(50% - 6px); max-width: none; }
+}
+
+/* Eventos: lo que se hizo en las fiestas, una sola vez arriba del cartel */
+.v2 .alcance { margin: 0 0 48px; }
+.v2 .alcance h3 { margin: 0 0 16px; font-size: 1.35rem; max-width: 28em; }
+.v2 .alcance ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0 24px; }
+@media (min-width: 560px) { .v2 .alcance ul { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 960px) { .v2 .alcance ul { grid-template-columns: repeat(4, 1fr); } }
+.v2 .alcance li { display: flex; gap: 10px; align-items: flex-start; padding: 14px 0; border-top: 1px solid rgba(255, 255, 255, .22); color: #E3EDF1; line-height: 1.45; }
+.v2 .alcance .ico { flex: none; width: 20px; height: 20px; margin-top: 1px; color: #7CCBE9; }
+
+/* ---------- Eventos: todo sobre un mismo eje central ---------- */
+body.v2[data-page="eventos"] .hero--events .hero__inner { display: block; }
+body.v2[data-page="eventos"] .hero--events .hero__copy { max-width: 46rem; margin-inline: auto; text-align: center; }
+body.v2[data-page="eventos"] .hero--events .lead { margin-inline: auto; }
+body.v2[data-page="eventos"] .hero--events .hero__actions { justify-content: center; }
+body.v2[data-page="eventos"] .venue { padding-top: 0; }
+body.v2[data-page="eventos"] .venue__chip-wrap { position: static; justify-content: center; padding-top: 24px; }
+body.v2[data-page="eventos"] main .section__head { margin-inline: auto; text-align: center; }
+body.v2[data-page="eventos"] main .section__head p { margin-inline: auto; }
+body.v2[data-page="eventos"] #incluye .card { text-align: center; }
+body.v2[data-page="eventos"] #incluye .icon-badge { margin-inline: auto; }
+body.v2[data-page="eventos"] .alcance { text-align: center; }
+body.v2[data-page="eventos"] .alcance h3 { margin-inline: auto; }
+body.v2[data-page="eventos"] .alcance li { flex-direction: column; align-items: center; gap: 8px; }
+body.v2[data-page="eventos"] .lineup__item { grid-template-columns: minmax(0, 1fr); text-align: center; }
+body.v2[data-page="eventos"] .lineup__item p { margin-inline: auto; }
+body.v2[data-page="eventos"] .lineup__photo { width: 100%; max-width: 760px; margin-inline: auto; }
+body.v2[data-page="eventos"] .lineup__photo img { aspect-ratio: auto; height: auto; }
+body.v2[data-page="eventos"] .lineup__gallery { justify-content: center; }
+body.v2[data-page="eventos"] #consulta .coverage { display: block; max-width: 620px; margin-inline: auto; }
+body.v2[data-page="eventos"] #consulta .coverage__copy { margin-bottom: 28px; text-align: center; }
+body.v2[data-page="eventos"] #consulta .coverage__copy p { margin-inline: auto; }
+body.v2[data-page="eventos"] #consulta .coverage__title { font-size: clamp(1.7rem, 5vw, 2.6rem); }
+body.v2[data-page="eventos"] #consulta .form__title, body.v2[data-page="eventos"] #consulta .form__hint, body.v2[data-page="eventos"] #consulta .form__status { text-align: center; }
+
+/* Eventos: fotos propias del equipo, a la misma altura y centradas */
+.v2 .crew { display: grid; gap: 20px; max-width: 940px; margin-inline: auto; justify-items: center; }
+.v2 .crew figure { margin: 0; width: 100%; text-align: center; }
+.v2 .crew__monitor { max-width: 420px; }
+.v2 .crew img { display: block; width: 100%; height: auto; border-radius: 6px; }
+.v2 .crew figcaption { margin-top: 10px; font-size: .98rem; color: #2B4350; }
+@media (min-width: 760px) {
+  /* columnas segun la proporcion de cada foto (4:3 y 3:4): quedan igual de altas */
+  .v2 .crew { grid-template-columns: 1.333fr .75fr; align-items: start; }
+  .v2 .crew__monitor { max-width: none; }
+}

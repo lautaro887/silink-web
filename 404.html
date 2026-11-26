@@ -5,32 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Página no encontrada | Silink</title>
   <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#0A2533">
-  <link rel="icon" href="/favicon.ico" sizes="48x48">
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <meta name="theme-color" content="#0B2531">
+  <!-- Esta página puede aparecer en cualquier dirección. La base apunta a la raíz del sitio:
+       en github.io es /nombre-del-repositorio/ y con dominio propio es /. -->
+  <script>
+    (function () {
+      var base = document.createElement('base');
+      base.href = /\.github\.io$/.test(location.hostname) ? '/' + location.pathname.split('/')[1] + '/' : '/';
+      document.head.appendChild(base);
+    })();
+  </script>
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&display=swap" rel="stylesheet">
   <style>
-    :root { --blue-700:#0E7AA6; --blue-900:#0A2533; --green:#42AD4C; --muted:#44555E; }
     * { box-sizing: border-box; }
-    body { margin:0; min-height:100vh; display:grid; place-items:center; padding:24px; text-align:center;
-           font-family: system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif; line-height:1.6; color:#17262E; background:#F2F7FA; }
-    main { max-width: 460px; }
-    img { height:44px; width:auto; margin:0 auto 32px; }
-    h1 { margin:0 0 .4em; font-size:2rem; color:var(--blue-900); line-height:1.2; }
-    p { margin:0 0 1.5em; color:var(--muted); font-size:1.1rem; }
-    .code { font-size:.9rem; font-weight:700; letter-spacing:.1em; color:var(--blue-700); margin-bottom:8px; }
-    a.btn { display:inline-flex; align-items:center; justify-content:center; min-height:50px; padding:0 1.6rem; border-radius:12px;
-            background:var(--green); color:var(--blue-900); font-weight:700; text-decoration:none; }
-    a.btn:hover { background:#389A42; }
-    a:focus-visible { outline:3px solid var(--blue-700); outline-offset:3px; }
+    body { margin: 0; min-height: 100vh; display: flex; flex-direction: column; background: #fff; color: #0B2531;
+           font-family: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; line-height: 1.6; }
+    /* Las tres líneas de la marca: soporte, internet y cámaras */
+    .strand { height: 10px; background: linear-gradient(90deg, #42AD4C 0 33.34%, #1390C0 33.34% 66.67%, #3F4042 66.67%); }
+    main { width: 100%; max-width: 640px; margin: auto; padding: 40px 24px; }
+    img { display: block; width: 164px; height: auto; margin: 0 0 40px; }
+    h1 { margin: 0 0 .4em; font-size: clamp(2rem, 7vw, 3.2rem); font-weight: 800; font-stretch: 112%; letter-spacing: -.025em; line-height: 1.05; }
+    p { max-width: 30em; margin: 0 0 1.6em; font-size: 1.15rem; color: #2B4350; }
+    a.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 1.8rem;
+            border-radius: 999px; background: #0B2531; color: #fff; font-weight: 700; text-decoration: none; }
+    a.btn:hover { background: #17394A; }
+    a:focus-visible { outline: 3px solid #0B6A8F; outline-offset: 3px; }
   </style>
 </head>
 <body>
+  <div class="strand" aria-hidden="true"></div>
   <main>
-    <img src="/assets/logo-horizontal.png" alt="Silink" width="164" height="36">
-    <p class="code">ERROR 404</p>
+    <img src="assets/logo-horizontal.png" alt="Silink" width="164" height="36">
     <h1>No encontramos esa página</h1>
-    <p>Puede que el enlace haya cambiado o que esté mal escrito. Volvé al inicio y te ayudamos desde ahí.</p>
-    <a class="btn" href="/">Volver al inicio</a>
+    <p>Puede que el enlace haya cambiado o que esté mal escrito. Volvé al inicio y seguí desde ahí.</p>
+    <a class="btn" href="index.html">Volver al inicio</a>
   </main>
 </body>
 </html>

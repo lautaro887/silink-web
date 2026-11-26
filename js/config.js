@@ -40,6 +40,7 @@ const WHATSAPP_POR_PAGINA = {
   soporte: 'soporte',
   internet: 'internet',
   camaras: 'internet',
+  eventos: 'internet',
   ayuda: 'soporte',
   nosotros: 'soporte',
 };
@@ -63,6 +64,61 @@ const AYUDA = {
   formasDePago: [],
 };
 
+/* --- Fotos de la página Eventos --------------------------------------------
+   1) Copiá cada foto en la carpeta assets/eventos/ (JPG o WebP, unos
+      1200 px de ancho, para que la página cargue rápido).
+   2) Agregala en "fotos" con su ruta y una descripción corta, por ejemplo:
+      { src: 'assets/eventos/sunsetstrip.jpg', alt: 'Escenario de Sunsetstrip' }
+   Una foto se muestra al lado del nombre; dos o más arman una galería.
+   Sin fotos queda solo el nombre del evento.
+   Usá solo fotos propias o con permiso. "credito" aparece debajo.
+   ------------------------------------------------------------------------ */
+const FOTOS_EVENTOS = {
+  sunsetstrip:    {
+    credito: 'Sunsetstrip',
+    fotos: [
+      { src: 'assets/eventos/sunsetstrip-escenario.jpg',  alt: 'Escenario de Sunsetstrip de día, con la montaña de fondo' },
+      { src: 'assets/eventos/sunsetstrip-potrerillos.jpg', alt: 'Vista aérea del público de Sunsetstrip en Potrerillos, junto al dique' },
+      { src: 'assets/eventos/sunsetstrip-noche.jpg',       alt: 'Público de Sunsetstrip de noche, con luces azules' },
+      { src: 'assets/eventos/sunsetstrip-cabina.jpg',      alt: 'El público visto desde la cabina del DJ en Sunsetstrip' },
+    ],
+  },
+  primaveraFolck: {
+    credito: 'Folck Producciones',
+    fotos: [
+      { src: 'assets/eventos/primavera-folck-dia.jpg',   alt: 'Escenario de Primavera Folck de día, con público en el parque' },
+      { src: 'assets/eventos/primavera-folck-noche.jpg', alt: 'Escenario de Primavera Folck de noche, con pantalla y llamaradas' },
+    ],
+  },
+  moonfest:       {
+    credito: 'Folck Producciones',
+    fotos: [
+      { src: 'assets/eventos/moonfest.jpg', alt: 'Público de Moonfest junto al dique de Potrerillos' },
+    ],
+  },
+  fiestasFolck:   {
+    credito: 'Folck Producciones',
+    fotos: [
+      { src: 'assets/eventos/folck-escenario.jpg', alt: 'Escenario con luces azules y banderas del público en una fiesta Folck' },
+      { src: 'assets/eventos/folck-publico.jpg',   alt: 'El público visto desde la cabina del DJ en una fiesta Folck' },
+      { src: 'assets/eventos/folck-naranja.jpg',   alt: 'Escenario iluminado en naranja en una fiesta Folck' },
+    ],
+  },
+  terroir:        {
+    credito: 'Silink',
+    fotos: [
+      { src: 'assets/eventos/terroir-vinedo.webp', alt: 'Antena y equipos de conectividad instalados junto a un viñedo' },
+    ],
+  },
+  sub0:           {
+    credito: 'sub0',
+    fotos: [
+      { src: 'assets/eventos/sub0-cartel.jpg', alt: 'Cartel de sub0 en la entrada del evento en Buenos Aires' },
+      { src: 'assets/eventos/sub0-charla.jpg', alt: 'Charla en sub0 con pantalla gigante y público' },
+    ],
+  },
+};
+
 /* --- Servicios para Google (JSON-LD) ---------------------------------------
    Se publican como catálogo de servicios del negocio.
    ------------------------------------------------------------------------ */
@@ -72,7 +128,7 @@ const SERVICIOS_SEO = [
   { nombre: 'Obras de fibra óptica', descripcion: 'Tendidos de fibra en edificios, parques y predios privados, y enlaces entre edificios.' },
   { nombre: 'Conexión entre sucursales (VPN)', descripcion: 'Red privada y segura entre oficinas, administrada y monitoreada.' },
   { nombre: 'Internet y WiFi para eventos', descripcion: 'Conectividad WiFi para eventos multitudinarios con monitoreo en vivo.' },
-  { nombre: 'Soporte informático y monitoreo', descripcion: 'Cuidamos tus computadoras, impresoras, red y sistemas con abono mensual fijo, remoto y en sitio en todo Mendoza.' },
+  { nombre: 'Soporte tecnológico y monitoreo', descripcion: 'Cuidamos tus computadoras, impresoras, red y sistemas con abono mensual fijo, remoto y en sitio en todo Mendoza.' },
   { nombre: 'Cámaras de seguridad', descripcion: 'Instalación de cámaras IP con grabación y vista en vivo desde el celular, para empresas, comercios, hogares y espacios comunes de edificios.' },
 ];
 
@@ -80,7 +136,7 @@ const SERVICIOS_SEO = [
    Se editan acá y se actualizan en todo el sitio (data-bind="textos.clave").
    ------------------------------------------------------------------------ */
 const TEXTOS = {
-  // Bajada fija cada vez que se presenta el soporte informático
+  // Bajada fija cada vez que se presenta el soporte tecnológico
   bajadaSoporte: 'Cuidamos tus computadoras, impresoras, red y sistemas',
   // Línea "Qué es" de cada servicio
   queEsInternet: 'La conexión que llega a tu casa, local u oficina.',
@@ -151,10 +207,11 @@ const PLANES = [
 const MENSAJES_WA = {
   /* Botón "Contacto" del menú (uno por página: 'contacto' + nombre de la página) */
   contacto: 'Hola Silink! Quiero hacer una consulta.',
-  contactoInicio: 'Hola Silink! Quiero consultar por sus servicios de soporte informático, internet o cámaras.',
-  contactoSoporte: 'Hola Silink! Quiero consultar por soporte informático.',
+  contactoInicio: 'Hola Silink! Quiero consultar por sus servicios de soporte tecnológico, internet o cámaras.',
+  contactoSoporte: 'Hola Silink! Quiero consultar por soporte tecnológico.',
   contactoInternet: 'Hola Silink! Quiero consultar por internet por fibra.',
   contactoCamaras: 'Hola Silink! Quiero consultar por cámaras de seguridad.',
+  contactoEventos: 'Hola Silink! Quiero consultar por internet y WiFi para un evento.',
   contactoAyuda: 'Hola Silink! Necesito ayuda.',
   contactoNosotros: 'Hola Silink! Quiero hacer una consulta.',
 
@@ -162,9 +219,9 @@ const MENSAJES_WA = {
   consulta: 'Hola Silink! Tengo una consulta sobre sus servicios.',
   diagnostico: 'Hola Silink! Quiero pedir el diagnóstico sin cargo.',
 
-  /* Soporte informático (número de soporte) */
-  soporte: 'Hola Silink! Quiero consultar por soporte informático para mi empresa.',
-  soporteComercios: 'Hola Silink! Quiero consultar por soporte informático a demanda para mi comercio (computadoras, impresoras y red).',
+  /* Soporte tecnológico (número de soporte) */
+  soporte: 'Hola Silink! Quiero consultar por soporte tecnológico para mi empresa.',
+  soporteComercios: 'Hola Silink! Quiero consultar por soporte tecnológico a demanda para mi comercio (computadoras, impresoras y red).',
   proyecto: 'Hola Silink! Quiero cotizar un proyecto (cableado, WiFi, mudanza de oficina, servidores o dominios/correo). Les cuento qué necesito:',
   // Se usa para los botones de cada plan; {plan}, {moneda} y {precio} se reemplazan solos.
   plan: 'Hola Silink! Me interesa el plan {plan} ({moneda} {precio}/mes). ¿Podemos charlar para ver si es el indicado para mi empresa?',
@@ -187,15 +244,14 @@ const MENSAJES_WA = {
   camarasEmpresas: 'Hola Silink! Quiero consultar por cámaras y control de acceso para mi empresa (oficina o depósito).',
   camarasEdificios: 'Hola Silink! Quiero consultar por cámaras y control de acceso para los espacios comunes de un edificio.',
 
-  /* Juntos (número de internet) */
-  todoEnUno: 'Hola Silink! Quiero consultar por el precio especial de combinar internet, soporte informático y cámaras.',
-  paqueteComercio: 'Hola Silink! Quiero consultar por el precio especial del paquete Comercio Conectado.',
-  paqueteOficina: 'Hola Silink! Quiero consultar por el precio especial del paquete Oficina Tranquila.',
-  paqueteSucursales: 'Hola Silink! Quiero consultar por el precio especial del paquete Empresa con Sucursales.',
+  /* Precio combinado (número de internet) */
+  todoEnUno: 'Hola Silink! Quiero consultar por el precio especial de combinar internet, soporte tecnológico y cámaras.',
 
   /* Formularios. Los {campos} se reemplazan solos con lo que escribe la persona. */
   cobertura: 'Hola, quiero saber si llegan con internet a {direccion}{piso}. Es para {tipo}. Mi nombre es {nombre}.',
   edificio: 'Hola Silink! Soy {nombre}. Quiero fibra en mi edificio: {direccion}{unidades}.',
+
+  consultaEvento: 'Hola Silink! Soy {nombre}. Quiero consultar por internet y WiFi para un evento: {evento}. Lugar: {lugar}.{fecha}{personas}',
 
   /* Ayuda */
   falla: 'Hola Silink! Quiero reportar una falla.\nNombre o empresa: \nDirección: \nServicio afectado (internet, WiFi, cámaras, computadoras): \nDesde cuándo pasa: \nQué ya probé: ',

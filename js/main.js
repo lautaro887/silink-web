@@ -186,6 +186,39 @@
     });
   }
 
+  /* ---------- Eventos: fotos del cartel (config) ---------- */
+  function renderFotosEventos() {
+    if (typeof FOTOS_EVENTOS === 'undefined') return;
+    $$('[data-foto]').forEach(function (item) {
+      var dato = FOTOS_EVENTOS[item.getAttribute('data-foto')];
+      if (!dato || !dato.fotos || !dato.fotos.length) return;
+      var nombre = $('h3', item) ? $('h3', item).textContent : '';
+      var galeria = dato.fotos.length > 1;
+      var caja = el('div', galeria ? 'lineup__gallery' : 'lineup__photo');
+
+      dato.fotos.forEach(function (foto) {
+        var figura = el('figure');
+        var img = el('img');
+        img.alt = foto.alt || 'Foto del evento ' + nombre;
+        img.loading = 'lazy';
+        // En la galería cada foto ocupa según su proporción: todas quedan a la misma altura sin recortes
+        img.onload = function () { figura.style.setProperty('--r', (img.naturalWidth / img.naturalHeight).toFixed(3)); };
+        // Si la ruta está mal escrita, esa foto no se muestra
+        img.onerror = function () {
+          figura.remove();
+          if (!$('img', caja)) { caja.remove(); item.classList.remove('has-photo', 'has-gallery'); }
+        };
+        img.src = foto.src || foto;
+        figura.appendChild(img);
+        caja.appendChild(figura);
+      });
+
+      if (dato.credito) caja.appendChild(el('p', 'lineup__credit', 'Fotos: ' + dato.credito));
+      item.appendChild(caja);
+      item.classList.add(galeria ? 'has-gallery' : 'has-photo');
+    });
+  }
+
   /* ---------- Ayuda: formas de pago (config) ---------- */
   function renderPagos() {
     var list = $('#pagos-lista');
@@ -214,8 +247,8 @@
       '@type': 'ProfessionalService',
       '@id': SITE.url + '/#negocio',
       name: SITE.nombre,
-      description: 'Empresa de soluciones tecnológicas de Mendoza: soporte informático en todo Mendoza, internet por fibra óptica en el microcentro y cámaras de seguridad, con un solo responsable.',
-      slogan: 'Soluciones tecnológicas en Mendoza. Un solo responsable.',
+      description: 'Empresa de soluciones tecnológicas de Mendoza: soporte tecnológico en todo Mendoza, internet por fibra óptica en el microcentro y cámaras de seguridad, todo centralizado.',
+      slogan: 'Soluciones tecnológicas en Mendoza. Todo centralizado.',
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'Servicios de Silink',
@@ -419,6 +452,7 @@
     renderEmail();
     renderZonas();
     renderPagos();
+    renderFotosEventos();
     initWaForms();
     renderJsonLd();
     initMenu();
