@@ -90,7 +90,6 @@
       'textos.bajadaSoporte': TEXTOS.bajadaSoporte,
       'textos.queEsInternet': TEXTOS.queEsInternet,
       'textos.queEsSoporte': TEXTOS.queEsSoporte,
-      'textos.queEsCamaras': TEXTOS.queEsCamaras,
     };
     $$('[data-bind]').forEach(function (node) {
       var value = values[node.getAttribute('data-bind')];

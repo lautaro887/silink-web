@@ -141,7 +141,6 @@ const TEXTOS = {
   // Línea "Qué es" de cada servicio
   queEsInternet: 'La conexión que llega a tu casa, local u oficina.',
   queEsSoporte: 'El equipo que cuida la tecnología que tenés adentro: computadoras, impresoras, red, correo y copias de seguridad.',
-  queEsCamaras: 'Cámaras que graban y que ves en vivo desde el celular.',
 };
 
 /* --- Condiciones comerciales (se usan debajo de los planes y en las preguntas frecuentes) --- */
