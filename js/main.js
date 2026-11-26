@@ -18,9 +18,7 @@
 
   function planMessage(plan) {
     return MENSAJES_WA.plan
-      .replace('{plan}', plan.nombre)
-      .replace('{moneda}', CONDICIONES.moneda)
-      .replace('{precio}', plan.precio);
+      .replace('{plan}', plan.nombre);
   }
 
   function el(tag, className, text) {
@@ -52,12 +50,6 @@
       card.appendChild(title);
       card.appendChild(el('p', 'plan__for', plan.para));
 
-      var price = el('p', 'plan__price');
-      price.appendChild(el('span', 'plan__currency', CONDICIONES.moneda));
-      price.appendChild(el('span', 'plan__amount', String(plan.precio)));
-      price.appendChild(el('span', 'plan__period', '/mes'));
-      card.appendChild(price);
-
       var list = el('ul', 'plan__list');
       plan.incluye.forEach(function (item) {
         list.appendChild(el('li', '', item));
@@ -76,7 +68,6 @@
   /* ---------- Textos con datos de config (data-bind="ruta"). Si el valor está vacío se deja el texto del HTML ---------- */
   function renderBindings() {
     var values = {
-      'condiciones.horaAdicional': CONDICIONES.moneda + ' ' + CONDICIONES.horaAdicional,
       'condiciones.contratoMinimoMeses': String(CONDICIONES.contratoMinimoMeses),
       'condiciones.avisoCancelacionDias': String(CONDICIONES.avisoCancelacionDias),
       'condiciones.anticipo': CONDICIONES.anticipoProyecto + '%',
@@ -293,7 +284,6 @@
         opens: SITE.horaApertura,
         closes: SITE.horaCierre,
       }],
-      founder: { '@type': 'Person', name: 'Lautaro Celedón' },
     };
     if (SITE.email) data.email = SITE.email;
     if (SITE.instagram) data.sameAs = [SITE.instagram];

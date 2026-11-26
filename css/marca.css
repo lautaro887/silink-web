@@ -474,13 +474,11 @@ body.v2[data-page="camaras"] { --accent: var(--cam); }
 /* ---------- Ajustes de revision ---------- */
 /* Franjas con la misma separacion que las dos puertas: los bordes quedan alineados */
 @media (min-width: 900px) { .v2 .strips { gap: 24px; margin-top: 24px; } }
-/* "Conocer al equipo" en una sola linea */
+/* El boton de "Quienes somos" en una sola linea */
 .v2 .services-close .btn { flex: none; white-space: nowrap; }
 /* Camaras: la ficha del servicio se ve igual que las tarjetas vecinas */
 .v2 main .grid .svc { border-top-width: 3px; }
 .v2 main .grid .svc h3 { font-size: 1.2rem; }
-/* Nosotros: mismo aire arriba y abajo de la ficha */
-.v2 #quien .people { margin-top: 0; }
 
 /* ==========================================================================
    Eventos: el predio de noche. La senal llega al publico en tandas, una vez.

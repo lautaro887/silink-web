@@ -1,7 +1,7 @@
 /* ==========================================================================
    SILINK · CONFIGURACIÓN DEL SITIO
    Todo lo que vas a querer cambiar seguido está en este archivo:
-   precios de los planes de soporte, teléfonos, correo, horario, textos de
+   planes de soporte, teléfonos, correo, horario, textos de
    los planes, mensajes de WhatsApp, zonas de cobertura y datos de la página Ayuda.
    No hace falta tocar los .html ni main.js para ajustar estos datos.
    ========================================================================== */
@@ -149,8 +149,6 @@ const TEXTOS = {
 
 /* --- Condiciones comerciales (se usan debajo de los planes y en las preguntas frecuentes) --- */
 const CONDICIONES = {
-  moneda: 'USD',
-  horaAdicional: 25,        // precio de la hora extra
   contratoMinimoMeses: 6,
   avisoCancelacionDias: 30,
   anticipoProyecto: 50,     // % de anticipo en proyectos; el saldo es 100 - anticipo
@@ -164,7 +162,6 @@ const PLANES = [
   {
     id: 'base',
     nombre: 'Base',
-    precio: 150,
     para: 'Para tener respaldo técnico sin comprometerte a mucho.',
     destacado: false,
     incluye: [
@@ -177,7 +174,6 @@ const PLANES = [
   {
     id: 'pyme',
     nombre: 'Pyme',
-    precio: 270,
     para: 'Para tener soporte constante y control mensual de cómo viene todo.',
     destacado: true,
     incluye: [
@@ -190,7 +186,6 @@ const PLANES = [
   {
     id: 'pro',
     nombre: 'Pro',
-    precio: 425,
     para: 'Para empresas con sucursales o que no se pueden permitir parar.',
     destacado: false,
     incluye: [
@@ -226,8 +221,8 @@ const MENSAJES_WA = {
   soporte: 'Hola Silink! Quiero consultar por soporte tecnológico para mi empresa.',
   soporteComercios: 'Hola Silink! Quiero consultar por soporte tecnológico a demanda para mi comercio (computadoras, impresoras y red).',
   proyecto: 'Hola Silink! Quiero cotizar un proyecto (cableado, WiFi, mudanza de oficina, servidores o dominios/correo). Les cuento qué necesito:',
-  // Se usa para los botones de cada plan; {plan}, {moneda} y {precio} se reemplazan solos.
-  plan: 'Hola Silink! Me interesa el plan {plan} ({moneda} {precio}/mes). ¿Podemos charlar para ver si es el indicado para mi empresa?',
+  // Se usa para los botones de cada plan; {plan} se reemplaza solo.
+  plan: 'Hola Silink! Me interesa el plan {plan}. ¿Podemos charlar para ver si es el indicado para mi empresa?',
 
   /* Internet (número de internet) */
   internetGeneral: 'Hola Silink! Quiero consultar por internet por fibra.',
